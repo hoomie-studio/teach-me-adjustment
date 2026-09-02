@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>測量平差｜第 8 課：權 P 與加權最小二乘</title>
+  <style>
+    :root{
+      --bg:#f7f8fb; --card:#ffffff; --text:#1f2937; --muted:#6b7280;
+      --line:#d9dee7; --accent:#2563eb; --accent-soft:#eaf1ff; --ok:#0f766e;
+      --warn:#b45309;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+    .lesson8{max-width:980px;margin:0 auto;padding:24px 16px 64px}
+    .hero,.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px}
+    .hero h1{margin:4px 0 8px;font-size:clamp(24px,4vw,34px)}
+    .eyebrow{font-size:14px;font-weight:700;color:var(--accent)}
+    h2{font-size:20px;margin:0 0 12px}
+    h3{font-size:17px;margin:16px 0 8px}
+    p{margin:8px 0}
+    .muted{color:var(--muted)}
+    .formula{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:#f3f6fb;border-radius:12px;padding:12px 14px;overflow:auto}
+    .grid{display:grid;gap:12px}.grid2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    label{display:block;font-size:14px;font-weight:650}
+    input{width:100%;margin-top:6px;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:16px}
+    button{border:0;border-radius:10px;padding:11px 16px;background:var(--accent);color:#fff;font-weight:700;font-size:15px;cursor:pointer}
+    button.secondary{background:#eef2f7;color:var(--text);border:1px solid var(--line)}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+    .stat{background:#f8fafc;border:1px solid var(--line);border-radius:12px;padding:14px}.stat .v{font-size:22px;font-weight:800}.stat .k{font-size:12px;color:var(--muted)}
+    table{width:100%;border-collapse:collapse;min-width:720px}
+    th,td{padding:10px;border-bottom:1px solid var(--line);text-align:right}
+    th:first-child,td:first-child{text-align:left}
+    .table-wrap{overflow:auto}
+    .bar{height:10px;background:#e5e7eb;border-radius:999px;overflow:hidden}
+    .bar>span{display:block;height:100%;background:var(--accent);border-radius:999px}
+    .callout{padding:14px;border-radius:12px;background:var(--accent-soft);border:1px solid #c8d8ff}
+    .ok{color:var(--ok);font-weight:700}
+    .warn{color:var(--warn);font-weight:700}
+    .steps{counter-reset:s}.step{position:relative;padding-left:42px;margin:16px 0}.step:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:1px;width:28px;height:28px;border-radius:50%;background:var(--accent);color:white;display:grid;place-items:center;font-weight:800}
+    .matrix{display:inline-grid;grid-template-columns:repeat(3,auto);gap:6px 18px;padding:8px 14px;border-left:2px solid #111827;border-right:2px solid #111827;border-radius:4px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+    @media (max-width:720px){.grid2,.grid3,.stats{grid-template-columns:1fr}.hero,.card{padding:16px}.lesson8{padding:14px 10px 48px}}
+  </style>
+</head>
+<body>
+<main class="lesson8" id="lesson-8">
+  <!-- CODEX MERGE NOTE:
+       1) 可將 <main id="lesson-8"> 整段合併進現有課程頁。
+       2) 若現有網站已有全域樣式，可保留本頁 scoped class，或將 CSS 轉為專案既有樣式。
+       3) JS 只操作 #lesson-8 內元素，不依賴外部函式庫。
+  -->
+
+  <section class="hero">
+    <div class="eyebrow">測量平差 · 第 8 課</div>
+    <h1>權 P 與加權最小二乘</h1>
+    <p>前面我們讓每一筆觀測「一人一票」。但真實測量中，不同觀測的精度可能差很多。這一堂要學會：<b>可信度不同，影響力也應該不同。</b></p>
+  </section>
+
+  <section class="card">
+    <h2>① 為什麼不能每筆觀測都一樣重要？</h2>
+    <div class="grid grid2">
+      <div class="callout">
+        <b>觀測 A</b><br>
+        10.000 m<br>
+        標準差 σ = 0.001 m（±1 mm）
+      </div>
+      <div class="callout">
+        <b>觀測 B</b><br>
+        10.010 m<br>
+        標準差 σ = 0.010 m（±10 mm）
+      </div>
+    </div>
+    <p>如果直接平均，兩筆資料各佔 50%。但 A 的不確定程度比 B 小很多，所以 A 應該對最後答案有更大的影響。</p>
+  </section>
+
+  <section class="card">
+    <h2>② 權重的基本公式</h2>
+    <div class="formula">pᵢ = 1 / σᵢ²</div>
+    <p>σ 越小 → σ² 越小 → 1/σ² 越大 → <b>權 p 越大</b>。</p>
+    <p class="muted">目前先採最常見的「彼此獨立觀測」情況，因此 P 是對角矩陣。</p>
+  </section>
+
+  <section class="card">
+    <h2>③ 自己輸入觀測值與標準差</h2>
+    <div class="grid grid3">
+      <div>
+        <h3>觀測 1</h3>
+        <label>L₁（m）<input id="l81" type="number" step="any" value="10.000"></label>
+        <label>σ₁（m）<input id="s81" type="number" step="any" min="0.0000001" value="0.001"></label>
+      </div>
+      <div>
+        <h3>觀測 2</h3>
+        <label>L₂（m）<input id="l82" type="number" step="any" value="10.010"></label>
+        <label>σ₂（m）<input id="s82" type="number" step="any" min="0.0000001" value="0.010"></label>
+      </div>
+      <div>
+        <h3>觀測 3</h3>
+        <label>L₃（m）<input id="l83" type="number" step="any" value="10.002"></label>
+        <label>σ₃（m）<input id="s83" type="number" step="any" min="0.0000001" value="0.002"></label>
+      </div>
+    </div>
+    <div class="toolbar">
+      <button id="l8calc">重新計算</button>
+      <button class="secondary" id="l8reset">恢復範例</button>
+    </div>
+    <div id="l8msg" class="muted" aria-live="polite"></div>
+  </section>
+
+  <section class="card">
+    <h2>④ 每一筆資料到底有多重要？</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>觀測</th><th>L</th><th>σ</th><th>σ²</th><th>p=1/σ²</th><th>正規化權重</th><th>影響比例</th></tr></thead>
+        <tbody id="l8rows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>⑤ 普通平均 vs 加權平均</h2>
+    <div class="stats">
+      <div class="stat"><div class="k">普通平均</div><div class="v" id="mean8">—</div></div>
+      <div class="stat"><div class="k">加權平均</div><div class="v" id="wmean8">—</div></div>
+      <div class="stat"><div class="k">差值</div><div class="v" id="diff8">—</div></div>
+    </div>
+    <div class="formula" id="wformula8"></div>
+    <p>你可以把某一筆 σ 改得很大，例如從 0.002 改成 0.050。它的權會迅速變小，最後的平差值也會越來越不受它影響。</p>
+  </section>
+
+  <section class="card">
+    <h2>⑥ P 矩陣是什麼？</h2>
+    <p>三筆互相獨立的觀測，其權矩陣寫成：</p>
+    <div style="overflow:auto">
+      <div class="matrix" id="pmat8">
+        <span>p₁</span><span>0</span><span>0</span>
+        <span>0</span><span>p₂</span><span>0</span>
+        <span>0</span><span>0</span><span>p₃</span>
+      </div>
+    </div>
+    <p>對角線放每一筆觀測自己的權；非對角線目前是 0，表示暫時假設不同觀測之間沒有相關性。</p>
+  </section>
+
+  <section class="card">
+    <h2>⑦ 為什麼 Aᵀv = 0 會變成 AᵀPv = 0？</h2>
+
+    <div class="step">
+      前面普通最小二乘最小化的是：
+      <div class="formula">S = vᵀv = v₁² + v₂² + v₃²</div>
+    </div>
+
+    <div class="step">
+      現在不同觀測的重要性不同，因此把每個殘差平方乘上權：
+      <div class="formula">S = vᵀPv = p₁v₁² + p₂v₂² + p₃v₃²</div>
+    </div>
+
+    <div class="step">
+      又因為：
+      <div class="formula">v = L − Ax</div>
+      所以：
+      <div class="formula">S = (L−Ax)ᵀ P (L−Ax)</div>
+    </div>
+
+    <div class="step">
+      對未知數 x 微分，令最小值處的斜率為 0：
+      <div class="formula">AᵀP(L−A x̂) = 0</div>
+    </div>
+
+    <div class="step">
+      展開：
+      <div class="formula">AᵀPL − AᵀPA x̂ = 0</div>
+    </div>
+
+    <div class="step">
+      移項得到加權法方程：
+      <div class="formula"><b>AᵀPA x̂ = AᵀPL</b></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>⑧ 只有一個未知數時，公式其實很簡單</h2>
+    <p>如果三次都是量同一個未知距離 x：</p>
+    <div class="formula">A = [1,1,1]ᵀ</div>
+    <p>代入加權法方程，最後就是：</p>
+    <div class="formula">x̂ = (p₁L₁ + p₂L₂ + p₃L₃) / (p₁+p₂+p₃)</div>
+    <p>也就是你剛才互動計算器算出的「加權平均」。所以加權平均其實就是最簡單的一種加權平差。</p>
+  </section>
+
+  <section class="card">
+    <h2>⑨ 本堂你要記住的關係</h2>
+    <div class="callout">
+      σ 小 → 觀測較精密 → p 大 → 對結果影響較大<br><br>
+      σ 大 → 觀測較不精密 → p 小 → 對結果影響較小
+    </div>
+    <div class="formula" style="margin-top:12px">普通最小二乘：AᵀA x̂ = AᵀL<br><br>加權最小二乘：AᵀPA x̂ = AᵀPL</div>
+    <p class="muted">下一堂建議接：方差、協方差、相關性，以及為什麼 P 不一定永遠只是單純的對角矩陣。</p>
+  </section>
+</main>
+
+<script>
+(() => {
+  const root = document.getElementById('lesson-8');
+  if (!root || root.dataset.ready === '1') return;
+  root.dataset.ready = '1';
+
+  const $ = (s) => root.querySelector(s);
+  const fmt = (x, digits=8) => Number.isFinite(x)
+    ? x.toFixed(digits).replace(/0+$/,'').replace(/\.$/,'')
+    : '—';
+
+  function calculate(){
+    const L = [1,2,3].map(i => Number($('#l8'+i).value));
+    const S = [1,2,3].map(i => Number($('#s8'+i).value));
+
+    if (L.some(v => !Number.isFinite(v)) || S.some(v => !Number.isFinite(v) || v <= 0)){
+      $('#l8msg').innerHTML = '<span class="warn">請確認所有觀測值都是數字，而且標準差 σ 必須大於 0。</span>';
+      return;
+    }
+
+    const variances = S.map(s => s*s);
+    const weights = variances.map(v => 1/v);
+    const sumW = weights.reduce((a,b)=>a+b,0);
+    const norm = weights.map(w => w/sumW);
+    const mean = L.reduce((a,b)=>a+b,0)/L.length;
+    const wmean = L.reduce((sum,l,i)=>sum+l*weights[i],0)/sumW;
+
+    $('#l8rows').innerHTML = L.map((l,i) => `
+      <tr>
+        <td>觀測 ${i+1}</td>
+        <td>${fmt(l,6)}</td>
+        <td>${fmt(S[i],8)}</td>
+        <td>${fmt(variances[i],10)}</td>
+        <td>${fmt(weights[i],4)}</td>
+        <td>${(norm[i]*100).toFixed(2)}%</td>
+        <td style="min-width:140px">
+          <div class="bar"><span style="width:${Math.max(1,norm[i]*100)}%"></span></div>
+        </td>
+      </tr>`).join('');
+
+    $('#mean8').textContent = fmt(mean,6) + ' m';
+    $('#wmean8').textContent = fmt(wmean,6) + ' m';
+    $('#diff8').textContent = fmt(wmean-mean,6) + ' m';
+
+    $('#wformula8').textContent =
+      'x̂ = (' +
+      L.map((l,i)=>`${fmt(weights[i],2)}×${fmt(l,6)}`).join(' + ') +
+      ') / (' + weights.map(w=>fmt(w,2)).join(' + ') +
+      ') = ' + fmt(wmean,6) + ' m';
+
+    $('#pmat8').innerHTML = `
+      <span>${fmt(weights[0],2)}</span><span>0</span><span>0</span>
+      <span>0</span><span>${fmt(weights[1],2)}</span><span>0</span>
+      <span>0</span><span>0</span><span>${fmt(weights[2],2)}</span>`;
+
+    $('#l8msg').innerHTML = '<span class="ok">計算完成。試著把某一筆 σ 調大，觀察它的權重怎麼下降。</span>';
+  }
+
+  $('#l8calc').addEventListener('click', calculate);
+  $('#l8reset').addEventListener('click', () => {
+    $('#l81').value='10.000'; $('#s81').value='0.001';
+    $('#l82').value='10.010'; $('#s82').value='0.010';
+    $('#l83').value='10.002'; $('#s83').value='0.002';
+    calculate();
+  });
+
+  [1,2,3].forEach(i => {
+    $('#l8'+i).addEventListener('input', calculate);
+    $('#s8'+i).addEventListener('input', calculate);
+  });
+
+  calculate();
+})();
+</script>
+</body>
+</html>
