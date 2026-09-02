@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>測量平差學習網｜第1～7課完整版</title>
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--ink:#172033;--muted:#667085;--line:#dfe5ef;--blue:#315efb;--violet:#6d4aff;--green:#16845b;--red:#c94242;--amber:#bd6b13}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC",sans-serif;line-height:1.65}
+button,input,textarea{font:inherit}.bar{position:sticky;top:0;z-index:9;background:#f6f8fceF;border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.bar>div,.wrap{max-width:1100px;margin:auto}.bar>div{padding:10px 14px;display:flex;justify-content:space-between;align-items:center;gap:8px}.brand{font-weight:850}.nav{display:flex;gap:5px;flex-wrap:wrap}.nav button,.ghost{border:1px solid var(--line);background:white;border-radius:9px;padding:7px 10px;cursor:pointer}
+.wrap{padding:18px 14px 60px}.page{display:none}.page.active{display:block}.hero,.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:19px;margin-bottom:14px}.hero{background:linear-gradient(135deg,#fff,#f0f4ff)}
+.eyebrow{font-size:13px;color:var(--muted);font-weight:750}h1,h2,h3{line-height:1.25;margin:0}h1{font-size:clamp(28px,5vw,45px)}h2{font-size:26px}h3{font-size:19px}p{margin:8px 0 0}.small{font-size:14px;color:var(--muted)}
+.grid{display:grid;gap:12px}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:700px){.g2,.g3,.g4{grid-template-columns:1fr}.nav{display:none}}
+.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;background:#f3f5f9;border:1px solid var(--line);border-radius:11px;padding:12px;margin-top:10px;overflow:auto}
+input,textarea{width:100%;border:1px solid var(--line);background:#fff;border-radius:9px;padding:9px}label{font-size:14px;font-weight:700}.btn{border:0;border-radius:10px;background:var(--blue);color:white;padding:10px 14px;font-weight:800;cursor:pointer;margin-top:10px}.kpi{font-size:24px;font-weight:850}.call{border-left:4px solid var(--blue);background:#f3f6ff;border-radius:8px;padding:10px 12px;margin-top:12px}
+table{border-collapse:collapse;width:100%;min-width:600px}th,td{border-bottom:1px solid var(--line);padding:9px;text-align:right}th:first-child,td:first-child{text-align:left}.scroll{overflow:auto}
+.mind{display:grid;grid-template-columns:1fr 1fr;gap:12px}.node{border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px;text-align:left;cursor:pointer}.node:hover{border-color:var(--blue)}.center{grid-column:1/-1;background:linear-gradient(135deg,var(--blue),var(--violet));color:white;text-align:center;border-radius:16px;padding:18px}.tag{font-size:12px;color:var(--blue);font-weight:800}.next{display:flex;justify-content:space-between;gap:8px;margin-top:18px}
+svg{width:100%;height:auto}.good{font-weight:800;color:var(--green)}
+</style></head>
+<body>
+<header class="bar"><div><div class="brand">測量平差學習網｜完整版</div><div class="nav"><button onclick="go('home')">首頁</button><button onclick="go('l1')">1</button><button onclick="go('l2')">2</button><button onclick="go('l3')">3</button><button onclick="go('l4')">4</button><button onclick="go('l5')">5</button><button onclick="go('l6')">6</button><button onclick="go('l7')">7</button></div></div></header>
+<main class="wrap">
+
+<section id="home" class="page">
+<div class="hero"><div class="eyebrow">第 1～7 課完整版</div><h1>測量平差互動學習地圖</h1><p>首頁只負責導航；每一課保留完整定義、公式、推導與互動計算。全課統一採 <b>v = Ax − L</b>。</p></div>
+<div class="card"><h3>課程心智圖</h3><div class="mind" style="margin-top:14px">
+<div class="center"><b>測量平差</b><br>有誤差的觀測 → 最小二乘 → 最佳估計 → 幾何投影</div>
+<button class="node" onclick="go('l1')"><span class="tag">第1課</span><br><b>觀測值、真值、殘差</b><br><span class="small">L、T、x̂、v、標準差</span></button>
+<button class="node" onclick="go('l2')"><span class="tag">第2課</span><br><b>為什麼要最小二乘</b><br><span class="small">候選值、Σv²、碗形曲線</span></button>
+<button class="node" onclick="go('l3')"><span class="tag">第3課</span><br><b>微分找最小值</b><br><span class="small">斜率、dS/dx̂=0、推導平均值</span></button>
+<button class="node" onclick="go('l4')"><span class="tag">第4課</span><br><b>矩陣 A、x、L、v</b><br><span class="small">設計矩陣與逐列展開</span></button>
+<button class="node" onclick="go('l5')"><span class="tag">第5課</span><br><b>法方程</b><br><span class="small">Aᵀ、AᵀA、AᵀL、求解</span></button>
+<button class="node" onclick="go('l6')"><span class="tag">第6課</span><br><b>Aᵀv=0：模型直線</b><br><span class="small">3D觀測空間與正交投影</span></button>
+<button class="node" onclick="go('l7')" style="grid-column:1/-1"><span class="tag">第7課</span><br><b>兩未知數：模型平面</b><br><span class="small">欄向量、欄空間、v ⟂ Col(A)</span></button>
+</div></div>
+<div class="card"><h3>整套課程主線</h3><div class="formula">觀測 L
+  ↓
+建立模型 Ax
+  ↓
+殘差 v = Ax − L
+  ↓
+S = vᵀv = Σv² 最小
+  ↓
+Aᵀv = 0
+  ↓
+Aᵀ(Ax̂−L)=0
+  ↓
+AᵀA x̂ = AᵀL
+  ↓
+x̂ = 最小二乘估計</div></div>
+</section>
+
+<section id="l1" class="page">
+<div class="hero"><div class="eyebrow">第 1 課</div><h2>觀測值、真值、平差值與殘差</h2><p>先把平差最基本的名詞弄懂，不急著碰矩陣。</p></div>
+<div class="card"><h3>① 輸入重複觀測</h3><p class="small">例如同一段距離量三次。</p><textarea id="obs1" rows="2">100.012, 100.018, 100.010</textarea><button class="btn" onclick="calc1()">計算全部數值</button></div>
+<div class="grid g4">
+<div class="card"><span class="small">觀測數 n</span><div id="n1" class="kpi">—</div></div>
+<div class="card"><span class="small">平差值 x̂</span><div id="m1" class="kpi">—</div></div>
+<div class="card"><span class="small">Σv²</span><div id="ss1" class="kpi">—</div></div>
+<div class="card"><span class="small">單次觀測標準差 s</span><div id="sd1" class="kpi">—</div></div></div>
+<div class="card"><h3>② 四個角色</h3><div class="grid g2" style="margin-top:10px">
+<div><b>觀測值 ℓᵢ</b><p class="small">儀器實際量到的數字。</p></div><div><b>真值 T</b><p class="small">理論上真正的值，但通常不知道。</p></div>
+<div><b>平差值 x̂</b><p class="small">根據觀測資料估計出的最佳值。</p></div><div><b>殘差 vᵢ</b><p class="small">本課統一：vᵢ = x̂ − ℓᵢ。</p></div></div>
+<div class="formula">x̂ = (ℓ₁+ℓ₂+...+ℓₙ)/n
+vᵢ = x̂ − ℓᵢ
+s = √(Σvᵢ²/(n−1))</div>
+<div class="call"><b>真誤差 ≠ 殘差。</b> 真誤差需要知道真值 T；殘差只需要平差值 x̂ 與觀測值。</div></div>
+<div class="card"><h3>③ 每一筆觀測如何被修正</h3><div class="scroll"><table><thead><tr><th>#</th><th>ℓᵢ</th><th>vᵢ=x̂−ℓᵢ</th><th>vᵢ²</th><th>ℓᵢ+vᵢ</th></tr></thead><tbody id="tb1"></tbody></table></div><p id="sumv1"></p></div>
+<div class="next"><button class="ghost" onclick="go('home')">← 首頁</button><button class="btn" onclick="go('l2')">下一課 →</button></div>
+</section>
+
+<section id="l2" class="page">
+<div class="hero"><div class="eyebrow">第 2 課</div><h2>為什麼要最小二乘？</h2><p>我們不是先規定答案要取平均；而是先要求 Σv² 最小，最後發現最佳值就是平均值。</p></div>
+<div class="card"><h3>① 固定三筆觀測：10、11、12</h3><div class="formula">v₁=x̂−10　v₂=x̂−11　v₃=x̂−12
+S(x̂)=v₁²+v₂²+v₃²</div>
+<label>候選 x̂：<b id="x2o"></b></label><input id="x2" type="range" min="8" max="14" step=".01" value="9"><div class="grid g3" style="margin-top:12px"><div class="card"><span class="small">候選 x̂</span><div id="x2k" class="kpi"></div></div><div class="card"><span class="small">Σv²</span><div id="s2" class="kpi"></div></div><div class="card"><span class="small">真正最低點</span><div class="kpi">11</div></div></div><svg id="plot2" viewBox="0 0 700 300"></svg></div>
+<div class="card"><h3>② 為什麼不能直接 Σv？</h3><p>正負殘差會互相抵消。例如 −1、0、+1 加起來是 0，但不代表完全沒有誤差。</p><div class="formula">Σv 可能因正負抵消
+Σv² 不會互相抵消
+所以用 S = Σv² 衡量整體不吻合程度</div><div class="call">最小二乘的意思就是：在所有可能的 x̂ 中，找讓 S=Σv² 最小的那一個。</div></div>
+<div class="next"><button class="ghost" onclick="go('home')">← 首頁</button><button class="btn" onclick="go('l3')">下一課 →</button></div>
+</section>
+
+<section id="l3" class="page">
+<div class="hero"><div class="eyebrow">第 3 課</div><h2>微分為什麼可以找到最小值？</h2><p>把微分先理解成「目前位置的斜率」。</p></div>
+<div class="grid g3"><div class="card"><b>最低點左邊</b><p>斜率 &lt; 0，往右走 S 會下降。</p></div><div class="card"><b>最低點</b><p>斜率 = 0，曲線暫時水平。</p></div><div class="card"><b>最低點右邊</b><p>斜率 &gt; 0，往右走 S 會上升。</p></div></div>
+<div class="card"><h3>① 自己移動 x̂</h3><label>x̂ = <b id="x3o"></b></label><input id="x3" type="range" min="8" max="14" step=".01" value="9"><div class="grid g3" style="margin-top:12px"><div class="card"><span class="small">S</span><div id="s3" class="kpi"></div></div><div class="card"><span class="small">dS/dx̂</span><div id="d3" class="kpi"></div></div><div class="card"><span class="small">判斷</span><div id="dir3" style="font-weight:800"></div></div></div><svg id="plot3" viewBox="0 0 700 300"></svg></div>
+<div class="card"><h3>② 從微分真的推導出平均值</h3><div class="formula">S(x̂)=Σ(x̂−ℓᵢ)²
+
+dS/dx̂ = 2Σ(x̂−ℓᵢ)
+
+最低點令：
+2Σ(x̂−ℓᵢ)=0
+
+Σ(x̂−ℓᵢ)=0
+n x̂ − Σℓᵢ = 0
+
+所以：
+x̂ = Σℓᵢ / n</div><div class="call">所以「平均值」不是我們硬規定的答案，而是最小二乘條件推導出來的答案。</div></div>
+<div class="next"><button class="ghost" onclick="go('home')">← 首頁</button><button class="btn" onclick="go('l4')">下一課 →</button></div>
+</section>
+
+<section id="l4" class="page">
+<div class="hero"><div class="eyebrow">第 4 課</div><h2>矩陣 A、x、L、v</h2><p>從普通聯立方程式出發，看矩陣到底整理了什麼。</p></div>
+<div class="card"><h3>① 編輯三條觀測式</h3><p class="small">每列代表 a·x+b·y≈L。</p><div class="scroll"><table><thead><tr><th>#</th><th>x係數</th><th>y係數</th><th>L</th></tr></thead><tbody>
+<tr><td>1</td><td><input id="a11" type="number" value="1"></td><td><input id="a12" type="number" value="1"></td><td><input id="L41" type="number" value="10"></td></tr>
+<tr><td>2</td><td><input id="a21" type="number" value="2"></td><td><input id="a22" type="number" value="1"></td><td><input id="L42" type="number" value="14"></td></tr>
+<tr><td>3</td><td><input id="a31" type="number" value="1"></td><td><input id="a32" type="number" value="2"></td><td><input id="L43" type="number" value="13"></td></tr></tbody></table></div><button class="btn" onclick="calc4()">建立矩陣</button></div>
+<div class="grid g3"><div class="card"><b>A 設計矩陣</b><div id="A4" class="formula"></div></div><div class="card"><b>x 未知數</b><div class="formula">[x, y]ᵀ</div></div><div class="card"><b>L 觀測向量</b><div id="LV4" class="formula"></div></div></div>
+<div class="card"><h3>② Ax 其實只是逐列做普通算術</h3><div id="expand4"></div><div class="formula">Ax = 模型根據 x、y 預測出的三筆值
+v = Ax − L</div></div>
+<div class="card"><h3>③ 自己猜 x、y，看殘差</h3><div class="grid g2"><label>x<input id="gx4" type="number" value="4"></label><label>y<input id="gy4" type="number" value="6"></label></div><button class="btn" onclick="guess4()">計算 Ax 與殘差</button><div id="res4"></div></div>
+<div class="next"><button class="ghost" onclick="go('home')">← 首頁</button><button class="btn" onclick="go('l5')">下一課 →</button></div>
+</section>
+
+<section id="l5" class="page">
+<div class="hero"><div class="eyebrow">第 5 課</div><h2>法方程與 Aᵀ 為什麼出現</h2><p>這堂不是背公式，而是把 Aᵀ、AᵀA、AᵀL 每一格算出來。</p></div>
+<div class="card"><h3>① 使用第 4 課目前的 A、L</h3><button class="btn" onclick="calc5()">計算法方程</button><div class="grid g3" style="margin-top:12px"><div><b>A</b><div id="A5" class="formula"></div></div><div><b>Aᵀ</b><div id="AT5" class="formula"></div></div><div><b>L</b><div id="L5" class="formula"></div></div></div></div>
+<div class="card"><h3>② 算 AᵀA</h3><div id="atawork5"></div><div id="ATA5" class="formula"></div></div>
+<div class="card"><h3>③ 算 AᵀL</h3><div id="atlwork5"></div><div id="ATL5" class="formula"></div></div>
+<div class="card"><h3>④ 法方程只是新的兩條聯立方程</h3><div id="NE5" class="formula"></div><div id="sol5"></div></div>
+<div class="card"><h3>⑤ 回代檢查</h3><div id="back5"></div></div>
+<div class="card"><h3>⑥ Aᵀ(Ax̂−L)=0 到底從哪裡來？</h3><p>因為：</p><div class="formula">v = Ax − L
+S = vᵀv = Σv²</div><p>對每個未知數微分並令斜率為 0，得到每一欄係數與殘差的加權總和都等於 0。把所有未知數的條件一起寫，就是：</p><div class="formula">Aᵀv = 0
+
+代入 v = Ax̂−L：
+
+Aᵀ(Ax̂−L)=0
+
+展開：
+AᵀA x̂ − AᵀL = 0
+
+所以：
+AᵀA x̂ = AᵀL</div></div>
+<div class="next"><button class="ghost" onclick="go('home')">← 首頁</button><button class="btn" onclick="go('l6')">下一課 →</button></div>
+</section>
+
+<section id="l6" class="page">
+<div class="hero"><div class="eyebrow">第 6 課</div><h2>Aᵀv=0 的幾何意義：模型是一條線</h2><p>這裡的三維空間不是地理 XYZ，而是三筆觀測形成的「觀測空間」。</p></div>
+<div class="card"><h3>① 同一個量觀測三次</h3><div class="grid g3"><label>L₁<input id="L61" type="number" value="10"></label><label>L₂<input id="L62" type="number" value="11"></label><label>L₃<input id="L63" type="number" value="12"></label></div><button class="btn" onclick="calc6()">重新計算</button></div>
+<div class="card"><h3>② 為什麼 Ax=(x,x,x)？</h3><div class="formula">L₁≈x
+L₂≈x
+L₃≈x
+
+A=[1,1,1]ᵀ
+Ax=[x,x,x]ᵀ</div><p>只有一個未知數 x，因此所有可能的 Ax 都落在方向 [1,1,1]ᵀ 的直線上。</p></div>
+<div class="card"><h3>③ 3D 觀測空間</h3><svg id="plot6" viewBox="0 0 720 480"></svg><div id="nums6"></div></div>
+<div class="card"><h3>④ 為什麼「最近」會導致垂直？</h3><p>從空間外的一個點 L 到一條直線，最短距離一定沿垂線。最小二乘就是在找這個最近點 Ax̂。</p><div class="formula">v = Ax̂ − L
+A · v = 0
+矩陣寫法：
+Aᵀv = 0</div><div id="dot6" class="call"></div></div>
+<div class="next"><button class="ghost" onclick="go('home')">← 首頁</button><button class="btn" onclick="go('l7')">下一課 →</button></div>
+</section>
+
+<section id="l7" class="page">
+<div class="hero"><div class="eyebrow">第 7 課</div><h2>兩個未知數：模型空間從直線升級成平面</h2><p>現在 A 有兩欄，所以模型可以沿兩個獨立方向移動。</p></div>
+<div class="card"><h3>① A 的兩個欄向量</h3><div class="formula">A = [1 1
+     2 1
+     1 2]
+
+a₁ = [1,2,1]ᵀ
+a₂ = [1,1,2]ᵀ
+
+Ax = x a₁ + y a₂</div><p>只要 a₁、a₂ 不平行，它們所有線性組合就形成一個平面。這個平面就是 <b>A 的欄空間 Col(A)</b>。</p></div>
+<div class="card"><h3>② 自己改 x、y，看 Ax 在平面移動</h3><div class="grid g2"><label>x=<b id="x7o"></b><input id="x7" type="range" min="-2" max="8" step=".05" value="4.5"></label><label>y=<b id="y7o"></b><input id="y7" type="range" min="-2" max="8" step=".05" value="4.5"></label></div><div id="ax7" class="formula"></div><svg id="plot7" viewBox="0 0 720 480"></svg><p class="small">三軸仍是三筆觀測的座標，不是真實世界 XYZ。</p></div>
+<div class="card"><h3>③ 把觀測 L 投影到平面</h3><div class="grid g3"><label>L₁<input id="L71" type="number" value="10"></label><label>L₂<input id="L72" type="number" value="14"></label><label>L₃<input id="L73" type="number" value="13"></label></div><button class="btn" onclick="solve7()">最小二乘投影</button><div id="res7"></div></div>
+<div class="card"><h3>④ Aᵀv=0 現在包含兩個垂直條件</h3><div class="formula">Aᵀv =
+[a₁ᵀv
+ a₂ᵀv]
+=
+[a₁·v
+ a₂·v]
+=
+[0
+ 0]</div><p>所以 v 同時垂直 a₁ 與 a₂。既然 a₁、a₂ 是平面內兩個獨立方向，v 就垂直整個平面。</p><div class="call"><b>最小二乘的幾何本質：</b>把觀測 L 正交投影到 Col(A)。Ax̂ 是投影點，v=Ax̂−L 是垂直於模型空間的殘差。</div></div>
+<div class="card"><h3>⑤ 把第 6、7 課比較</h3><div class="scroll"><table><thead><tr><th>概念</th><th>第6課</th><th>第7課</th></tr></thead><tbody><tr><td>未知數</td><td>1</td><td>2</td></tr><tr><td>A欄數</td><td>1</td><td>2</td></tr><tr><td>模型空間</td><td>直線</td><td>平面</td></tr><tr><td>Aᵀv=0</td><td>v垂直1個方向</td><td>v同時垂直2個欄向量</td></tr><tr><td>共同本質</td><td colspan="2">v ⟂ Col(A)</td></tr></tbody></table></div></div>
+<div class="next"><button class="ghost" onclick="go('home')">← 回首頁心智圖</button><button class="ghost" onclick="go('l1')">從第1課重看</button></div>
+</section>
+
+</main>
+<script>
+const pages=[...document.querySelectorAll('.page')];function go(id){pages.forEach(p=>p.classList.toggle('active',p.id===id));location.hash=id;scrollTo(0,0)}
+function f(x,d=6){return Number.isFinite(x)?x.toFixed(d).replace(/0+$/,'').replace(/\.$/,''):'—'}function parse(s){return s.split(/[\s,，;；]+/).filter(Boolean).map(Number)}
+function calc1(){const a=parse(obs1.value);if(a.length<2||a.some(x=>!Number.isFinite(x)))return;const m=a.reduce((s,x)=>s+x,0)/a.length,v=a.map(x=>m-x),ss=v.reduce((s,x)=>s+x*x,0),sd=Math.sqrt(ss/(a.length-1));n1.textContent=a.length;m1.textContent=f(m);ss1.textContent=f(ss,9);sd1.textContent=f(sd);tb1.innerHTML=a.map((x,i)=>`<tr><td>${i+1}</td><td>${f(x)}</td><td>${f(v[i])}</td><td>${f(v[i]*v[i],9)}</td><td>${f(x+v[i])}</td></tr>`).join('');sumv1.innerHTML='<b>檢查：</b>Σv = '+f(v.reduce((s,x)=>s+x,0),10)+' ≈ 0'}
+function curve(svg,x,deriv=false){const obs=[10,11,12],S=q=>obs.reduce((s,l)=>s+(q-l)**2,0),W=700,H=300,L=50,R=20,T=15,B=38,x0=8,x1=14,ymax=30,sx=q=>L+(q-x0)/(x1-x0)*(W-L-R),sy=q=>H-B-q/ymax*(H-T-B);let p='';for(let i=0;i<=120;i++){let q=x0+6*i/120;p+=(i?'L':'M')+sx(q)+','+sy(S(q))}let h=`<line x1="${L}" y1="${H-B}" x2="${W-R}" y2="${H-B}" stroke="currentColor" opacity=".25"/><path d="${p}" fill="none" stroke="${getComputedStyle(document.documentElement).getPropertyValue('--blue')}" stroke-width="4"/><circle cx="${sx(x)}" cy="${sy(S(x))}" r="7" fill="${getComputedStyle(document.documentElement).getPropertyValue('--violet')}"/>`;if(deriv){const d=6*x-66,dx=.7,y=S(x),yA=y-d*dx,yB=y+d*dx;h+=`<line x1="${sx(x-dx)}" y1="${sy(yA)}" x2="${sx(x+dx)}" y2="${sy(yB)}" stroke="#bd6b13" stroke-width="3"/>`}svg.innerHTML=h}
+function u2(){const x=+x2.value,S=[10,11,12].reduce((s,l)=>s+(x-l)**2,0);x2o.textContent=x2k.textContent=f(x,2);s2.textContent=f(S,4);curve(plot2,x)}x2.oninput=u2
+function u3(){const x=+x3.value,S=[10,11,12].reduce((s,l)=>s+(x-l)**2,0),d=6*x-66;x3o.textContent=f(x,2);s3.textContent=f(S,4);d3.textContent=f(d,4);dir3.textContent=Math.abs(d)<.03?'最低點附近：斜率≈0':d<0?'斜率<0：往右 S 下降':'斜率>0：往右 S 上升';curve(plot3,x,true)}x3.oninput=u3
+function data4(){return {A:[[+a11.value,+a12.value],[+a21.value,+a22.value],[+a31.value,+a32.value]],L:[+L41.value,+L42.value,+L43.value]}}
+function matA(A){return `[ ${f(A[0][0])}  ${f(A[0][1])} ]\n[ ${f(A[1][0])}  ${f(A[1][1])} ]\n[ ${f(A[2][0])}  ${f(A[2][1])} ]`}
+function calc4(){const {A,L}=data4();A4.textContent=matA(A);LV4.textContent='[ '+L.map(f).join(' ]\\n[ ')+' ]';expand4.innerHTML=A.map((r,i)=>`<div class="formula">第${i+1}列：${f(r[0])}x + ${f(r[1])}y ≈ ${f(L[i])}</div>`).join('');guess4()}
+function guess4(){const {A,L}=data4(),x=+gx4.value,y=+gy4.value,P=A.map(r=>r[0]*x+r[1]*y),v=P.map((z,i)=>z-L[i]),ss=v.reduce((s,z)=>s+z*z,0);res4.innerHTML=`<div class="formula">Ax = [${P.map(f).join(', ')}]ᵀ\nv=Ax−L=[${v.map(f).join(', ')}]ᵀ\nΣv²=${f(ss,8)}</div>`}
+function calc5(){const {A,L}=data4(),[r1,r2,r3]=A;const n11=r1[0]**2+r2[0]**2+r3[0]**2,n12=r1[0]*r1[1]+r2[0]*r2[1]+r3[0]*r3[1],n22=r1[1]**2+r2[1]**2+r3[1]**2,u1=r1[0]*L[0]+r2[0]*L[1]+r3[0]*L[2],u2=r1[1]*L[0]+r2[1]*L[1]+r3[1]*L[2],det=n11*n22-n12*n12;A5.textContent=matA(A);AT5.textContent=`[ ${f(r1[0])} ${f(r2[0])} ${f(r3[0])} ]\n[ ${f(r1[1])} ${f(r2[1])} ${f(r3[1])} ]`;L5.textContent='['+L.join(', ')+']ᵀ';atawork5.innerHTML=`<div class="formula">N₁₁=${f(r1[0])}²+${f(r2[0])}²+${f(r3[0])}²=${f(n11)}\nN₁₂=${f(r1[0])}×${f(r1[1])}+${f(r2[0])}×${f(r2[1])}+${f(r3[0])}×${f(r3[1])}=${f(n12)}\nN₂₂=${f(r1[1])}²+${f(r2[1])}²+${f(r3[1])}²=${f(n22)}</div>`;ATA5.textContent=`[${f(n11)} ${f(n12)}]\n[${f(n12)} ${f(n22)}]`;atlwork5.innerHTML=`<div class="formula">U₁=${f(r1[0])}×${L[0]}+${f(r2[0])}×${L[1]}+${f(r3[0])}×${L[2]}=${f(u1)}\nU₂=${f(r1[1])}×${L[0]}+${f(r2[1])}×${L[1]}+${f(r3[1])}×${L[2]}=${f(u2)}</div>`;ATL5.textContent=`[${f(u1)}]\n[${f(u2)}]`;if(Math.abs(det)<1e-10){sol5.innerHTML='<p>此 A 無法唯一求解。</p>';return}const x=(u1*n22-n12*u2)/det,y=(n11*u2-n12*u1)/det,P=A.map(r=>r[0]*x+r[1]*y),v=P.map((z,i)=>z-L[i]),ss=v.reduce((s,z)=>s+z*z,0),d1=r1[0]*v[0]+r2[0]*v[1]+r3[0]*v[2],d2=r1[1]*v[0]+r2[1]*v[1]+r3[1]*v[2];NE5.textContent=`${f(n11)}x̂ + ${f(n12)}ŷ = ${f(u1)}\n${f(n12)}x̂ + ${f(n22)}ŷ = ${f(u2)}`;sol5.innerHTML=`<div class="call"><b>解：</b>x̂=${f(x)}，ŷ=${f(y)}</div>`;back5.innerHTML=`<div class="formula">Ax̂=[${P.map(f).join(', ')}]ᵀ\nv=Ax̂−L=[${v.map(f).join(', ')}]ᵀ\nΣv²=${f(ss,8)}\nAᵀv=[${f(d1,9)}, ${f(d2,9)}]ᵀ ≈ [0,0]ᵀ</div>`}
+function pr(p){return[350+17*(p[0]-.62*p[1]),380-17*(p[2]+.42*p[1])]}function ln(a,b,c,w=2,d=''){let A=pr(a),B=pr(b);return `<line x1="${A[0]}" y1="${A[1]}" x2="${B[0]}" y2="${B[1]}" stroke="${c}" stroke-width="${w}" ${d?`stroke-dasharray="${d}"`:''}/>`}
+function calc6(){const L=[+L61.value,+L62.value,+L63.value],x=L.reduce((s,z)=>s+z,0)/3,P=[x,x,x],v=P.map((z,i)=>z-L[i]),dot=v.reduce((s,z)=>s+z,0);nums6.innerHTML=`<div class="formula">x̂=${f(x)}\nAx̂=[${P.map(f).join(', ')}]ᵀ\nv=Ax̂−L=[${v.map(f).join(', ')}]ᵀ</div>`;dot6.innerHTML=`Aᵀv = 1×(${f(v[0])})+1×(${f(v[1])})+1×(${f(v[2])}) = <b>${f(dot,9)} ≈ 0</b>`;let h=ln([0,0,0],[15,0,0],'currentColor',1)+ln([0,0,0],[0,15,0],'currentColor',1)+ln([0,0,0],[0,0,15],'currentColor',1)+ln([0,0,0],[15,15,15],'#315efb',4)+ln(L,P,'#c94242',4);let q=pr(L),p=pr(P);h+=`<circle cx="${q[0]}" cy="${q[1]}" r="7" fill="#c94242"/><text x="${q[0]+9}" y="${q[1]-8}">L</text><circle cx="${p[0]}" cy="${p[1]}" r="7" fill="#16845b"/><text x="${p[0]+9}" y="${p[1]+18}">Ax̂</text>`;plot6.innerHTML=h}
+function draw7(P,L,Q){const a=[1,2,1],b=[1,1,2],C=[[-2,-4,-2],[8,16,8],[16,24,24],[6,4,14]].map(pr);let h=`<polygon points="${C.map(z=>z.join(',')).join(' ')}" fill="#315efb" opacity=".11" stroke="#315efb" stroke-width="2"/>`+ln([0,0,0],[7,14,7],'#315efb',3)+ln([0,0,0],[7,7,14],'#6d4aff',3);let p=pr(P);h+=`<circle cx="${p[0]}" cy="${p[1]}" r="6" fill="#bd6b13"/><text x="${p[0]+8}" y="${p[1]-8}">Ax</text>`;if(L&&Q){h+=ln(L,Q,'#c94242',4);let l=pr(L),q=pr(Q);h+=`<circle cx="${l[0]}" cy="${l[1]}" r="7" fill="#c94242"/><text x="${l[0]+8}" y="${l[1]-8}">L</text><circle cx="${q[0]}" cy="${q[1]}" r="7" fill="#16845b"/><text x="${q[0]+8}" y="${q[1]+18}">Ax̂</text>`}plot7.innerHTML=h}
+function u7(){let x=+x7.value,y=+y7.value,P=[x+y,2*x+y,x+2*y];x7o.textContent=f(x,2);y7o.textContent=f(y,2);ax7.textContent=`Ax=[${P.map(z=>f(z,2)).join(', ')}]ᵀ = x·a₁+y·a₂`;draw7(P)}
+x7.oninput=u7;y7.oninput=u7
+function solve7(){const L=[+L71.value,+L72.value,+L73.value],u1=L[0]+2*L[1]+L[2],u2=L[0]+L[1]+2*L[2],x=(6*u1-5*u2)/11,y=(6*u2-5*u1)/11,P=[x+y,2*x+y,x+2*y],v=P.map((z,i)=>z-L[i]),d1=v[0]+2*v[1]+v[2],d2=v[0]+v[1]+2*v[2],ss=v.reduce((s,z)=>s+z*z,0);res7.innerHTML=`<div class="formula">x̂=${f(x)}　ŷ=${f(y)}\nAx̂=[${P.map(f).join(', ')}]ᵀ\nv=Ax̂−L=[${v.map(f).join(', ')}]ᵀ\nΣv²=${f(ss,8)}\n\na₁·v=${f(d1,9)} ≈ 0\na₂·v=${f(d2,9)} ≈ 0\nAᵀv≈[0,0]ᵀ</div><p class="good">v 同時垂直 a₁ 與 a₂，因此垂直整個 Col(A)。</p>`;draw7(P,L,P)}
+window.onhashchange=()=>go((location.hash||'#home').slice(1));calc1();u2();u3();calc4();calc5();calc6();u7();solve7();go((location.hash||'#home').slice(1));
+</script></body></html>
