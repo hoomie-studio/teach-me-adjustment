@@ -17,13 +17,14 @@ input,textarea{width:100%;border:1px solid var(--line);background:#fff;border-ra
 table{border-collapse:collapse;width:100%;min-width:600px}th,td{border-bottom:1px solid var(--line);padding:9px;text-align:right}th:first-child,td:first-child{text-align:left}.scroll{overflow:auto}
 .mind{display:grid;grid-template-columns:1fr 1fr;gap:12px}.node{border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px;text-align:left;cursor:pointer}.node:hover{border-color:var(--blue)}.center{grid-column:1/-1;background:linear-gradient(135deg,var(--blue),var(--violet));color:white;text-align:center;border-radius:16px;padding:18px}.tag{font-size:12px;color:var(--blue);font-weight:800}.next{display:flex;justify-content:space-between;gap:8px;margin-top:18px}
 svg{width:100%;height:auto}.good{font-weight:800;color:var(--green)}
+.lesson-frame{display:block;width:100%;height:min(1600px,calc(100vh - 100px));min-height:900px;border:0;background:#f7f8fb}
 </style></head>
 <body>
-<header class="bar"><div><div class="brand">測量平差學習網｜完整版</div><div class="nav"><button onclick="go('home')">首頁</button><button onclick="go('l1')">1</button><button onclick="go('l2')">2</button><button onclick="go('l3')">3</button><button onclick="go('l4')">4</button><button onclick="go('l5')">5</button><button onclick="go('l6')">6</button><button onclick="go('l7')">7</button></div></div></header>
+<header class="bar"><div><div class="brand">測量平差學習網｜完整版</div><div class="nav"><button onclick="go('home')">首頁</button><button onclick="go('l1')">1</button><button onclick="go('l2')">2</button><button onclick="go('l3')">3</button><button onclick="go('l4')">4</button><button onclick="go('l5')">5</button><button onclick="go('l6')">6</button><button onclick="go('l7')">7</button><button onclick="go('l8')">8</button></div></div></header>
 <main class="wrap">
 
 <section id="home" class="page">
-<div class="hero"><div class="eyebrow">第 1～7 課完整版</div><h1>測量平差互動學習地圖</h1><p>首頁只負責導航；每一課保留完整定義、公式、推導與互動計算。全課統一採 <b>v = Ax − L</b>。</p></div>
+<div class="hero"><div class="eyebrow">第 1～8 課完整版</div><h1>測量平差互動學習地圖</h1><p>首頁只負責導航；每一課保留完整定義、公式、推導與互動計算。全課統一採 <b>v = Ax − L</b>。</p></div>
 <div class="card"><h3>課程心智圖</h3><div class="mind" style="margin-top:14px">
 <div class="center"><b>測量平差</b><br>有誤差的觀測 → 最小二乘 → 最佳估計 → 幾何投影</div>
 <button class="node" onclick="go('l1')"><span class="tag">第1課</span><br><b>觀測值、真值、殘差</b><br><span class="small">L、T、x̂、v、標準差</span></button>
@@ -33,6 +34,7 @@ svg{width:100%;height:auto}.good{font-weight:800;color:var(--green)}
 <button class="node" onclick="go('l5')"><span class="tag">第5課</span><br><b>法方程</b><br><span class="small">Aᵀ、AᵀA、AᵀL、求解</span></button>
 <button class="node" onclick="go('l6')"><span class="tag">第6課</span><br><b>Aᵀv=0：模型直線</b><br><span class="small">3D觀測空間與正交投影</span></button>
 <button class="node" onclick="go('l7')" style="grid-column:1/-1"><span class="tag">第7課</span><br><b>兩未知數：模型平面</b><br><span class="small">欄向量、欄空間、v ⟂ Col(A)</span></button>
+<button class="node" onclick="go('l8')" style="grid-column:1/-1"><span class="tag">第8課</span><br><b>加權最小二乘</b><br><span class="small">權重、加權平均與不同精度觀測</span></button>
 </div></div>
 <div class="card"><h3>整套課程主線</h3><div class="formula">觀測 L
   ↓
@@ -177,6 +179,12 @@ Ax = x a₁ + y a₂</div><p>只要 a₁、a₂ 不平行，它們所有線性�
 <div class="next"><button class="ghost" onclick="go('home')">← 回首頁心智圖</button><button class="ghost" onclick="go('l1')">從第1課重看</button></div>
 </section>
 
+
+<section id="l8" class="page">
+<div class="hero"><div class="eyebrow">第 8 課</div><h2>加權最小二乘</h2><p>當不同觀測具有不同精度時，較可靠的觀測應有較大的影響力。本課透過互動工具理解權重與加權平差。</p></div>
+<div class="card" style="padding:0;overflow:hidden"><iframe class="lesson-frame" src="1-lesson8_weighted_least_squares.html" title="第8課：加權最小二乘"></iframe></div>
+<div class="next"><button class="ghost" onclick="go('l7')">← 第7課</button><button class="ghost" onclick="go('home')">回首頁心智圖</button></div>
+</section>
 </main>
 <script>
 const pages=[...document.querySelectorAll('.page')];function go(id){pages.forEach(p=>p.classList.toggle('active',p.id===id));location.hash=id;scrollTo(0,0)}
