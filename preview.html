@@ -18,6 +18,8 @@ table{border-collapse:collapse;width:100%;min-width:600px}th,td{border-bottom:1p
 .mind{display:grid;grid-template-columns:1fr 1fr;gap:12px}.node{border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px;text-align:left;cursor:pointer}.node:hover{border-color:var(--blue)}.center{grid-column:1/-1;background:linear-gradient(135deg,var(--blue),var(--violet));color:white;text-align:center;border-radius:16px;padding:18px}.tag{font-size:12px;color:var(--blue);font-weight:800}.next{display:flex;justify-content:space-between;gap:8px;margin-top:18px}
 svg{width:100%;height:auto}.good{font-weight:800;color:var(--green)}
 .lesson-frame{display:block;width:100%;height:min(1600px,calc(100vh - 100px));min-height:900px;border:0;background:#f7f8fb}
+
+.assessment{margin:18px 0 4px}.assessment .assessment-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}.assessment .assessment-head h3{margin:0}.assessment .badge{font-size:12px;color:var(--blue);font-weight:800;background:#edf2ff;border:1px solid #cfdbff;padding:4px 8px;border-radius:999px}.assessment .quiz-card,.assessment .challenge{border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px;background:#fbfcff}.assessment .q-title,.assessment .step-head{font-weight:800}.assessment .options{display:grid;gap:7px;margin-top:10px}.assessment .option{display:flex;gap:8px;align-items:flex-start;padding:8px;border:1px solid var(--line);border-radius:9px;background:white;cursor:pointer}.assessment .option input{width:auto;margin-top:4px}.assessment .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.assessment .btn.secondary,.assessment .btn.ghost{background:white;color:var(--ink);border:1px solid var(--line)}.assessment .feedback,.assessment .step-feedback{display:none;margin-top:10px;padding:9px;border-radius:8px}.assessment .feedback.show,.assessment .step-feedback.show{display:block}.assessment .ok{background:#e9f8ef;color:#137244}.assessment .bad,.assessment .warn{background:#fff1f1;color:#a33838}.assessment .step{margin-top:10px;padding:12px;border:1px solid var(--line);border-radius:12px;background:white}.assessment .step.locked{opacity:.55}.assessment .hint{margin-top:10px;color:var(--muted);font-size:14px}.assessment .hidden{display:none}.assessment .result{margin-top:10px;padding:10px;border-radius:8px;background:#eef4ff;border-left:4px solid var(--blue);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap}.assessment .score{display:flex;gap:8px;margin-top:10px}.assessment .stat{padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:white}.assessment .stat .k{font-size:12px;color:var(--muted)}.assessment .stat .v{font-weight:850;font-size:18px}@media(max-width:700px){.assessment .assessment-head{align-items:flex-start;flex-direction:column}.assessment .option{padding:10px}.assessment .btn{width:100%}.assessment .score{display:grid;grid-template-columns:repeat(3,1fr)}}
 </style></head>
 <body>
 <header class="bar"><div><div class="brand">測量平差學習網｜完整版</div><div class="nav"><button onclick="go('home')">首頁</button><button onclick="go('l1')">1</button><button onclick="go('l2')">2</button><button onclick="go('l3')">3</button><button onclick="go('l4')">4</button><button onclick="go('l5')">5</button><button onclick="go('l6')">6</button><button onclick="go('l7')">7</button><button onclick="go('l8')">8</button></div></div></header>
@@ -69,6 +71,7 @@ vᵢ = x̂ − ℓᵢ
 s = √(Σvᵢ²/(n−1))</div>
 <div class="call"><b>真誤差 ≠ 殘差。</b> 真誤差需要知道真值 T；殘差只需要平差值 x̂ 與觀測值。</div></div>
 <div class="card"><h3>③ 每一筆觀測如何被修正</h3><div class="scroll"><table><thead><tr><th>#</th><th>ℓᵢ</th><th>vᵢ=x̂−ℓᵢ</th><th>vᵢ²</th><th>ℓᵢ+vᵢ</th></tr></thead><tbody id="tb1"></tbody></table></div><p id="sumv1"></p></div>
+<div class="assessment-slot"></div>
 <div class="next"><button class="ghost" onclick="go('home')">← 首頁</button><button class="btn" onclick="go('l2')">下一課 →</button></div>
 </section>
 
@@ -80,6 +83,7 @@ S(x̂)=v₁²+v₂²+v₃²</div>
 <div class="card"><h3>② 為什麼不能直接 Σv？</h3><p>正負殘差會互相抵消。例如 −1、0、+1 加起來是 0，但不代表完全沒有誤差。</p><div class="formula">Σv 可能因正負抵消
 Σv² 不會互相抵消
 所以用 S = Σv² 衡量整體不吻合程度</div><div class="call">最小二乘的意思就是：在所有可能的 x̂ 中，找讓 S=Σv² 最小的那一個。</div></div>
+<div class="assessment-slot"></div>
 <div class="next"><button class="ghost" onclick="go('home')">← 首頁</button><button class="btn" onclick="go('l3')">下一課 →</button></div>
 </section>
 
@@ -99,6 +103,7 @@ n x̂ − Σℓᵢ = 0
 
 所以：
 x̂ = Σℓᵢ / n</div><div class="call">所以「平均值」不是我們硬規定的答案，而是最小二乘條件推導出來的答案。</div></div>
+<div class="assessment-slot"></div>
 <div class="next"><button class="ghost" onclick="go('home')">← 首頁</button><button class="btn" onclick="go('l4')">下一課 →</button></div>
 </section>
 
@@ -112,6 +117,7 @@ x̂ = Σℓᵢ / n</div><div class="call">所以「平均值」不是我們硬�
 <div class="card"><h3>② Ax 其實只是逐列做普通算術</h3><div id="expand4"></div><div class="formula">Ax = 模型根據 x、y 預測出的三筆值
 v = Ax − L</div></div>
 <div class="card"><h3>③ 自己猜 x、y，看殘差</h3><div class="grid g2"><label>x<input id="gx4" type="number" value="4"></label><label>y<input id="gy4" type="number" value="6"></label></div><button class="btn" onclick="guess4()">計算 Ax 與殘差</button><div id="res4"></div></div>
+<div class="assessment-slot"></div>
 <div class="next"><button class="ghost" onclick="go('home')">← 首頁</button><button class="btn" onclick="go('l5')">下一課 →</button></div>
 </section>
 
@@ -134,6 +140,7 @@ AᵀA x̂ − AᵀL = 0
 
 所以：
 AᵀA x̂ = AᵀL</div></div>
+<div class="assessment-slot"></div>
 <div class="next"><button class="ghost" onclick="go('home')">← 首頁</button><button class="btn" onclick="go('l6')">下一課 →</button></div>
 </section>
 
@@ -151,6 +158,7 @@ Ax=[x,x,x]ᵀ</div><p>只有一個未知數 x，因此所有可能的 Ax 都落�
 A · v = 0
 矩陣寫法：
 Aᵀv = 0</div><div id="dot6" class="call"></div></div>
+<div class="assessment-slot"></div>
 <div class="next"><button class="ghost" onclick="go('home')">← 首頁</button><button class="btn" onclick="go('l7')">下一課 →</button></div>
 </section>
 
@@ -176,6 +184,7 @@ Ax = x a₁ + y a₂</div><p>只要 a₁、a₂ 不平行，它們所有線性�
 [0
  0]</div><p>所以 v 同時垂直 a₁ 與 a₂。既然 a₁、a₂ 是平面內兩個獨立方向，v 就垂直整個平面。</p><div class="call"><b>最小二乘的幾何本質：</b>把觀測 L 正交投影到 Col(A)。Ax̂ 是投影點，v=Ax̂−L 是垂直於模型空間的殘差。</div></div>
 <div class="card"><h3>⑤ 把第 6、7 課比較</h3><div class="scroll"><table><thead><tr><th>概念</th><th>第6課</th><th>第7課</th></tr></thead><tbody><tr><td>未知數</td><td>1</td><td>2</td></tr><tr><td>A欄數</td><td>1</td><td>2</td></tr><tr><td>模型空間</td><td>直線</td><td>平面</td></tr><tr><td>Aᵀv=0</td><td>v垂直1個方向</td><td>v同時垂直2個欄向量</td></tr><tr><td>共同本質</td><td colspan="2">v ⟂ Col(A)</td></tr></tbody></table></div></div>
+<div class="assessment-slot"></div>
 <div class="next"><button class="ghost" onclick="go('home')">← 回首頁心智圖</button><button class="ghost" onclick="go('l1')">從第1課重看</button></div>
 </section>
 
@@ -183,6 +192,7 @@ Ax = x a₁ + y a₂</div><p>只要 a₁、a₂ 不平行，它們所有線性�
 <section id="l8" class="page">
 <div class="hero"><div class="eyebrow">第 8 課</div><h2>加權最小二乘</h2><p>當不同觀測具有不同精度時，較可靠的觀測應有較大的影響力。本課透過互動工具理解權重與加權平差。</p></div>
 <div class="card" style="padding:0;overflow:hidden"><iframe class="lesson-frame" src="1-lesson8_weighted_least_squares.html" title="第8課：加權最小二乘"></iframe></div>
+<div class="assessment-slot"></div>
 <div class="next"><button class="ghost" onclick="go('l7')">← 第7課</button><button class="ghost" onclick="go('home')">回首頁心智圖</button></div>
 </section>
 </main>
@@ -205,4 +215,262 @@ function u7(){let x=+x7.value,y=+y7.value,P=[x+y,2*x+y,x+2*y];x7o.textContent=f(
 x7.oninput=u7;y7.oninput=u7
 function solve7(){const L=[+L71.value,+L72.value,+L73.value],u1=L[0]+2*L[1]+L[2],u2=L[0]+L[1]+2*L[2],x=(6*u1-5*u2)/11,y=(6*u2-5*u1)/11,P=[x+y,2*x+y,x+2*y],v=P.map((z,i)=>z-L[i]),d1=v[0]+2*v[1]+v[2],d2=v[0]+v[1]+2*v[2],ss=v.reduce((s,z)=>s+z*z,0);res7.innerHTML=`<div class="formula">x̂=${f(x)}　ŷ=${f(y)}\nAx̂=[${P.map(f).join(', ')}]ᵀ\nv=Ax̂−L=[${v.map(f).join(', ')}]ᵀ\nΣv²=${f(ss,8)}\n\na₁·v=${f(d1,9)} ≈ 0\na₂·v=${f(d2,9)} ≈ 0\nAᵀv≈[0,0]ᵀ</div><p class="good">v 同時垂直 a₁ 與 a₂，因此垂直整個 Col(A)。</p>`;draw7(P,L,P)}
 window.onhashchange=()=>go((location.hash||'#home').slice(1));calc1();u2();u3();calc4();calc5();calc6();u7();solve7();go((location.hash||'#home').slice(1));
-</script></body></html>
+</script>
+<script>
+(()=>{const quizData = {
+    1: {
+      title:'觀測值、殘差、標準差',
+      questions:[
+        {q:'三次量測同一距離得到 10.00、10.02、10.01 m，等權情況下平差值最合理的是？',
+         options:['10.00 m','10.01 m','10.02 m','無法計算'], ans:1,
+         explain:'等權重複觀測的最小二乘解就是算術平均：(10.00+10.02+10.01)/3 = 10.01 m。'},
+        {q:'樣本標準差最常用的公式是哪一個？',
+         options:['s=Σv/n','s=Σv²/n','s=√[Σv²/(n−1)]','s=√Σv'], ans:2,
+         explain:'平方避免正負殘差互相抵消；估計一個平均值後自由度為 n−1，所以 s=√[Σv²/(n−1)]。'}
+      ]
+    },
+    2: {
+      title:'最小二乘',
+      questions:[
+        {q:'經典最小二乘真正要最小化的是？',
+         options:['Σv','Σ|v|','最大殘差','Σv²'], ans:3,
+         explain:'經典最小二乘讓殘差平方和 Σv² 最小。'},
+        {q:'為什麼不能直接用 Σv 判斷誤差大小？',
+         options:['v 不能為負','正負殘差可能互相抵消','矩陣無法相加','只有攝影測量才用'], ans:1,
+         explain:'+1 和 −1 的總和是 0，但誤差沒有消失；平方後不會抵消。'}
+      ]
+    },
+    3: {
+      title:'微分與最小值',
+      questions:[
+        {q:'在光滑的碗形函數最低點，通常先滿足哪個條件？',
+         options:['一階導數=0','函數值=0','未知數=0','所有殘差=0'], ans:0,
+         explain:'最低點的局部斜率為 0，因此先令一階導數為 0。'},
+        {q:'對 S=Σ(x−Lᵢ)² 微分後，為什麼最後得到平均值？',
+         options:['矩陣規定如此','所有觀測必須相同','令導數為 0 得到 nx=ΣLᵢ','因為標準差=平均值'], ans:2,
+         explain:'dS/dx=2Σ(x−Lᵢ)=0 → nx−ΣLᵢ=0 → x=ΣLᵢ/n。'}
+      ]
+    },
+    4: {
+      title:'A、x、L、v',
+      questions:[
+        {q:'設計矩陣 A 主要代表什麼？',
+         options:['每筆觀測的誤差大小','未知數如何影響各筆觀測的係數','最終平差值','權矩陣'], ans:1,
+         explain:'A 的每列對應一筆觀測方程，每欄對應一個未知數。'},
+        {q:'若本課採 v=Ax−L，v 代表什麼？',
+         options:['觀測值與模型預測值之差','未知數本身','A 的轉置','權矩陣'], ans:0,
+         explain:'此處採 v=Ax−L。不同教材可能採相反號，但整份推導要一致。'}
+      ]
+    },
+    5: {
+      title:'法方程與推導',
+      questions:[
+        {q:'普通最小二乘的法方程是哪一個？',
+         options:['Ax=L','Aᵀx=L','AᵀA x̂=AᵀL','A⁻¹L=0'], ans:2,
+         explain:'由 Aᵀ(L−Ax̂)=0 展開並移項得到 AᵀA x̂=AᵀL。'},
+        {q:'Aᵀ(L−Ax̂)=0 是怎麼出現的？',
+         options:['它是定義','對殘差平方和微分並令一階條件為0','把A直接反矩陣','由標準差公式推出'], ans:1,
+         explain:'從 S=vᵀv、v=Ax−L 出發，對未知數微分並令最小值條件為 0。'}
+      ]
+    },
+    6: {
+      title:'Aᵀv=0 的幾何意義',
+      questions:[
+        {q:'Aᵀv=0 的幾何意義最接近哪個？',
+         options:['v一定是零向量','L一定在模型空間','A一定是方陣','v與A的欄空間正交'], ans:3,
+         explain:'Aᵀv=0 表示 v 與 A 的每個欄向量內積皆為 0。'},
+        {q:'為什麼正交投影對應最近點？',
+         options:['點到直線/平面的最短距離是垂線','垂直向量長度必為0','Aᵀ一定可逆','L就是真值'], ans:0,
+         explain:'幾何上，點到模型空間的最短連線就是垂線。'}
+      ]
+    },
+    7: {
+      title:'模型空間與多未知數',
+      questions:[
+        {q:'A 有兩個線性獨立欄向量時，在三維觀測空間中通常張成什麼？',
+         options:['一個點','一個平面','一定是整個三維空間','沒有幾何意義'], ans:1,
+         explain:'兩個線性獨立方向張成二維子空間，因此在三維中是一個平面。'},
+        {q:'Aᵀv=0 對兩個未知數的意思是？',
+         options:['只有第一個殘差為0','兩個未知數都等於0','v同時垂直於A的兩個欄方向','A兩欄必須互相垂直'], ans:2,
+         explain:'Aᵀv 把 v 分別與 A 的每一欄做內積，全部為 0 表示同時正交。'}
+      ]
+    },
+    8: {
+      title:'權 P、加權最小二乘、後驗中誤差',
+      questions:[
+        {q:'若觀測彼此獨立，常見相對權定義為？',
+         options:['pᵢ∝1/σᵢ²','pᵢ∝σᵢ²','pᵢ∝1/σᵢ','所有pᵢ都必須等於1'], ans:0,
+         explain:'σ 越小代表越精密，因此權越大，常見相對權與 1/σ² 成正比。'},
+        {q:'加權最小二乘法方程是哪一個？',
+         options:['AᵀA x̂=AᵀL','PAx=L','AᵀPA x̂=AᵀPL','A⁻¹P=L'], ans:2,
+         explain:'最小化 vᵀPv → AᵀPv=0 → AᵀPAx̂=AᵀPL。'},
+        {q:'常見參數平差的後驗單位權中誤差公式為？',
+         options:['σ̂₀=√(vᵀPv/n)','σ̂₀=√[vᵀPv/(n−u)]','σ̂₀=vᵀPv','σ̂₀=√(AᵀPA)'], ans:1,
+         explain:'常見參數平差中自由度 r=n−u，因此 σ̂₀²=vᵀPv/r，σ̂₀=√[vᵀPv/(n−u)]。若有額外約束，自由度須依模型調整。'}
+      ]
+    }
+  };
+
+  const challengeData = {
+    1:{
+      title:'等權重複觀測：不用手算平均與標準差',
+      intro:'同一距離量測三次：10.000、10.020、10.010 m。你決定公式，網站負責計算。',
+      steps:[
+        {q:'第一步要用哪個平差值？', options:['取最大值','取算術平均','取最小值','任選一筆'], ans:1,
+         hint:'三次觀測被視為等權，而且都在量同一個未知距離。',
+         calc:()=>{const L=[10,10.02,10.01];const mean=L.reduce((a,b)=>a+b,0)/3;return `x̂ = (10.000+10.020+10.010)/3 = ${mean.toFixed(3)} m`;}},
+        {q:'得到 x̂ 後，下一步如何得到殘差？', options:['v=x̂−L','v=x̂/L','v=L²','v=1/L'], ans:0,
+         hint:'本網站後續統一採 v = L − Ax；單一未知數時 Ax 就是 x̂。',
+         calc:()=>{const L=[10,10.02,10.01],m=10.01,v=L.map(x=>x-m);return `v = [${v.map(x=>x.toFixed(3)).join(', ')}]ᵀ m`;}},
+        {q:'樣本標準差要除以哪個自由度？', options:['n','n−1','n+1','1'], ans:1,
+         hint:'這裡用 3 筆資料估計了 1 個平均值。',
+         calc:()=>{const v=[-0.01,0.01,0],s=Math.sqrt(v.reduce((a,b)=>a+b*b,0)/2);return `s = √[Σv²/(3−1)] = ${s.toFixed(4)} m`;}}
+      ]
+    },
+    2:{
+      title:'最小二乘：你選目標函數，網站畫完算完',
+      intro:'觀測為 9、10、14。不要自己展開平方，只判斷最小二乘應該最小化什麼。',
+      steps:[
+        {q:'應該最小化哪個量？',options:['Σv','Σv²','最大觀測值','ΣL'],ans:1,
+         hint:'正負殘差不能互相抵消。',
+         calc:()=>`S(x)=(x−9)²+(x−10)²+(x−14)²`},
+        {q:'找到極小值的第一階條件是？',options:['dS/dx=0','S=0','x=0','v=0'],ans:0,
+         hint:'在光滑的碗形曲線最低點，局部斜率是 0。',
+         calc:()=>`dS/dx = 2(x−9)+2(x−10)+2(x−14)=0`},
+        {q:'網站解完後 x̂ 會是多少？',options:['9','10','11','14'],ans:2,
+         hint:'整理後是 6x−66=0。',
+         calc:()=>`6x−66=0 → x̂=11`},
+      ]
+    },
+    3:{
+      title:'微分推導：只選「下一步」',
+      intro:'從 S=Σ(x−Lᵢ)² 出發，你只需要選擇正確的推導下一步。',
+      steps:[
+        {q:'對每一項 (x−Lᵢ)² 微分會得到？',options:['x−Lᵢ','2(x−Lᵢ)','2xLᵢ','Lᵢ²'],ans:1,
+         hint:'套用 d(u²)/dx = 2u·du/dx，而且 du/dx=1。',
+         calc:()=>`dS/dx = 2Σ(x−Lᵢ)`},
+        {q:'令導數為 0 後，下一步正確的是？',options:['nx=ΣLᵢ','x=ΣLᵢ','ΣLᵢ=0','n=0'],ans:0,
+         hint:'Σx 有 n 個 x。',
+         calc:()=>`2[nx−ΣLᵢ]=0 → nx=ΣLᵢ`},
+        {q:'最後得到？',options:['x̂=ΣLᵢ/n','x̂=n/ΣLᵢ','x̂=ΣLᵢ²','x̂=0'],ans:0,
+         hint:'把等式兩邊除以 n。',
+         calc:()=>`x̂ = ΣLᵢ/n`}
+      ]
+    },
+    4:{
+      title:'建立設計矩陣 A：由文字題變矩陣',
+      intro:'三筆觀測式：x+y≈10，2x+y≈14，x+2y≈13。你只負責辨認 A、x、L。',
+      steps:[
+        {q:'正確的 A 是哪個？',
+         options:['[[1,1],[2,1],[1,2]]','[[10],[14],[13]]','[[1,2,1],[1,1,2]]','[[x],[y]]'],ans:0,
+         hint:'每一列是一筆觀測方程，每一欄是一個未知數。',
+         calc:()=>`A = [[1,1],[2,1],[1,2]]`},
+        {q:'未知數向量 x 應該是？',options:['[10,14,13]ᵀ','[x,y]ᵀ','[1,1,1]ᵀ','[v₁,v₂,v₃]ᵀ'],ans:1,
+         hint:'這題只有 x、y 兩個未知數。',
+         calc:()=>`x = [x,y]ᵀ`},
+        {q:'觀測向量 L 應該是？',options:['[x,y]ᵀ','[1,2]ᵀ','[10,14,13]ᵀ','Aᵀ'],ans:2,
+         hint:'把三筆右邊的觀測常數直向排列。',
+         calc:()=>`L = [10,14,13]ᵀ`}
+      ]
+    },
+    5:{
+      title:'研究所式法方程：從 Aᵀ(L−Ax̂)=0 推到答案',
+      intro:'沿用 A=[[1,1],[2,1],[1,2]]、L=[10,14,13]ᵀ。你決定每一步，矩陣乘法由網站完成。',
+      steps:[
+        {q:'最小二乘的一階條件應選哪個？',options:['Aᵀ(L−Ax̂)=0','Ax̂=0','A⁻¹L=0','v=L'],ans:0,
+         hint:'它就是 Aᵀv=0，再代入 v=Ax̂−L。',
+         calc:()=>`Aᵀ(L−Ax̂)=0`},
+        {q:'展開後是哪個法方程？',options:['AᵀA x̂=AᵀL','AAᵀx̂=L','Ax̂=AᵀL','A⁻¹x̂=L'],ans:0,
+         hint:'把 Aᵀ 分配進括號，再移項。',
+         calc:()=>`AᵀA = [[6,5],[5,6]],  AᵀL=[51,50]ᵀ`},
+        {q:'網站解 2×2 方程後，哪組最接近？',options:['x̂≈5.091, ŷ≈4.091','x̂=10, ŷ=14','x̂=1, ŷ=1','x̂=0, ŷ=0'],ans:0,
+         hint:'解 [[6,5],[5,6]][x,y]ᵀ=[51,50]ᵀ。',
+         calc:()=>`x̂=56/11≈5.0909,  ŷ=45/11≈4.0909`}
+      ]
+    },
+    6:{
+      title:'正交投影：不用畫向量也能判斷',
+      intro:'同一未知數 x 被觀測三次，L=[10,11,12]ᵀ，A=[1,1,1]ᵀ。',
+      steps:[
+        {q:'模型空間中的最佳點 A x̂ 是？',options:['[10,11,12]ᵀ','[11,11,11]ᵀ','[1,1,1]ᵀ','[0,0,0]ᵀ'],ans:1,
+         hint:'等權三次量測的最佳 x̂ 是平均值 11。',
+         calc:()=>`A x̂ = [11,11,11]ᵀ`},
+        {q:'殘差 v=Ax̂−L 是？',options:['[1,0,-1]ᵀ','[-1,0,1]ᵀ','[10,11,12]ᵀ','[0,0,0]ᵀ'],ans:0,
+         hint:'逐項做 10−11、11−11、12−11。',
+         calc:()=>`v=[1,0,-1]ᵀ`},
+        {q:'Aᵀv 的值？',options:['0','1','2','3'],ans:0,
+         hint:'1×(-1)+1×0+1×1。',
+         calc:()=>`Aᵀv = -1+0+1 = 0 → v ⟂ Col(A)`}
+      ]
+    },
+    7:{
+      title:'兩未知數模型平面：驗證 v 同時垂直兩個方向',
+      intro:'使用第 5 課得到的解與殘差，檢查 Aᵀv=0 是否真的包含兩個條件。',
+      steps:[
+        {q:'A 的第一欄 a₁ 是？',options:['[1,2,1]ᵀ','[1,1,2]ᵀ','[10,14,13]ᵀ','[1,1]ᵀ'],ans:0,
+         hint:'把 A 的第一欄直向讀出。',
+         calc:()=>`a₁=[1,2,1]ᵀ`},
+        {q:'A 的第二欄 a₂ 是？',options:['[2,1,1]ᵀ','[1,1,2]ᵀ','[10,14,13]ᵀ','[2,2,2]ᵀ'],ans:1,
+         hint:'把 A 的第二欄直向讀出。',
+         calc:()=>`a₂=[1,1,2]ᵀ`},
+        {q:'若 v=[−9/11,3/11,3/11]ᵀ，a₁ᵀv 與 a₂ᵀv？',options:['都等於0','都等於1','一個0一個1','無法判斷'],ans:0,
+         hint:'分別做兩次內積。',
+         calc:()=>`a₁ᵀv=(−9+6+3)/11=0；a₂ᵀv=(−9+3+6)/11=0`}
+      ]
+    },
+    8:{
+      title:'研究所計算題：加權平差 + 後驗單位權中誤差',
+      intro:'同一距離三次觀測：L=[100.012,100.020,100.009] m；σ=[2,4,1] mm。你負責決策，網站負責算術。',
+      steps:[
+        {q:'三筆精度不同，第一步應做什麼？',
+         options:['直接普通平均','建立相對權 pᵢ∝1/σᵢ²','令所有殘差為0','把最大σ刪掉'],ans:1,
+         hint:'σ 越小應該越值得相信。',
+         calc:()=>`以 mm 為共同尺度：P ∝ diag(1/2²,1/4²,1/1²)=diag(0.25,0.0625,1)`},
+        {q:'因為三次都在量同一個未知距離 x，A 應該是？',
+         options:['[1,1,1]ᵀ','[100.012,100.020,100.009]ᵀ','I₃','[2,4,1]ᵀ'],ans:0,
+         hint:'每筆觀測對未知距離 x 的係數都是 1。',
+         calc:()=>`A=[1,1,1]ᵀ`},
+        {q:'此題最適合用哪個公式？',
+         options:['x̂=(AᵀPA)⁻¹AᵀPL','x̂=A⁻¹L','x̂=ΣL/3','x̂=vᵀPv'],ans:0,
+         hint:'這是加權最小二乘的一般解。',
+         calc:()=>{
+           const L=[100.012,100.020,100.009], w=[0.25,0.0625,1];
+           const sw=w.reduce((a,b)=>a+b,0), num=L.reduce((s,l,i)=>s+l*w[i],0), x=num/sw;
+           return `x̂ = Σ(pᵢLᵢ)/Σpᵢ = ${x.toFixed(6)} m`;
+         }},
+        {q:'求得 x̂ 後，下一步要算什麼才能評估後驗中誤差？',
+         options:['殘差 v=Ax̂−L','A⁻¹','新的觀測L','把P設成I'],ans:0,
+         hint:'後驗中誤差的分子需要 vᵀPv。',
+         calc:()=>{
+           const L=[100.012,100.020,100.009], w=[0.25,0.0625,1];
+           const sw=w.reduce((a,b)=>a+b,0), x=L.reduce((s,l,i)=>s+l*w[i],0)/sw;
+           const v=L.map(l=>x-l);
+           return `v=[${v.map(z=>z.toFixed(6)).join(', ')}]ᵀ m`;
+         }},
+        {q:'本題 n=3、u=1，自由度 r 是？',options:['1','2','3','4'],ans:1,
+         hint:'常見參數平差 r=n−u。',
+         calc:()=>`r=n−u=3−1=2`},
+        {q:'常見後驗單位權中誤差公式應選？',
+         options:['σ̂₀=√[vᵀPv/(n−u)]','σ̂₀=vᵀPv','σ̂₀=√(AᵀPA)','σ̂₀=Σv'],ans:0,
+         hint:'先得到後驗單位權方差，再開根號。',
+         calc:()=>{
+           const L=[100.012,100.020,100.009], w=[0.25,0.0625,1];
+           const sw=w.reduce((a,b)=>a+b,0), x=L.reduce((s,l,i)=>s+l*w[i],0)/sw;
+           const v=L.map(l=>x-l);
+           const q=v.reduce((s,z,i)=>s+w[i]*z*z,0);
+           const s0=Math.sqrt(q/2);
+           return `vᵀPv=${q.toExponential(6)}，r=2，σ̂₀=${s0.toExponential(6)}（此數值尺度取決於本題採用的相對權定義）`;
+         }}
+      ]
+    }
+  };
+
+
+function opts(name,a){return '<div class="options">'+a.map((x,i)=>'<label class="option"><input type="radio" name="'+name+'" value="'+i+'"><span>'+x+'</span></label>').join('')+'</div>'}
+function mount(n){const host=document.querySelector('#l'+n+' .assessment-slot');if(!host||host.dataset.ready)return;host.dataset.ready='1';const qd=quizData[n],cd=challengeData[n];host.className='assessment';host.innerHTML='<div class="assessment-head"><div><div class="eyebrow">課後練習</div><h3>選擇題 + 研究所計算挑戰</h3></div><span class="badge">先觀念，再計算</span></div><div class="quiz"><h3>本堂小測驗</h3>'+qd.questions.map((q,i)=>'<div class="quiz-card" data-answer="'+q.ans+'" data-explain="'+encodeURIComponent(q.explain)+'"><div class="q-title">'+(i+1)+'. '+q.q+'</div>'+opts('q-'+n+'-'+i,q.options)+'<div class="feedback"></div></div>').join('')+'<div class="actions"><button type="button" class="btn check">檢查本單元</button><button type="button" class="btn secondary resetq">重做</button></div><div class="score"></div></div><div class="challenge"><h3>研究所計算挑戰</h3><p>'+cd.intro+'</p><div class="call">規則：答對一個解題步驟後，才會顯示數值計算與下一步。</div><div class="steps"></div><div class="actions"><button type="button" class="btn secondary resetc">重新挑戰</button></div></div>';
+const cards=[...host.querySelectorAll('.quiz-card')],score=host.querySelector('.score');host.querySelector('.check').onclick=()=>{let correct=0,answered=0;cards.forEach(c=>{const pick=c.querySelector('input:checked'),fb=c.querySelector('.feedback'),ans=+c.dataset.answer,exp=decodeURIComponent(c.dataset.explain);fb.className='feedback show';if(!pick){fb.classList.add('bad');fb.textContent='尚未作答。'+exp;return}answered++;if(+pick.value===ans){correct++;fb.classList.add('ok');fb.textContent='答對了。'+exp}else{fb.classList.add('bad');fb.textContent='答錯了。正確答案：'+c.querySelector('input[value="'+ans+'"]').parentElement.innerText.trim()+'。'+exp}});score.innerHTML='<div class="stat"><div class="k">答對</div><div class="v">'+correct+'/'+cards.length+'</div></div><div class="stat"><div class="k">完成</div><div class="v">'+answered+'/'+cards.length+'</div></div><div class="stat"><div class="k">正確率</div><div class="v">'+Math.round(correct/cards.length*100)+'%</div></div>'};host.querySelector('.resetq').onclick=()=>{host.querySelectorAll('.quiz input').forEach(x=>x.checked=false);host.querySelectorAll('.feedback').forEach(x=>{x.className='feedback';x.textContent=''});score.innerHTML=''};
+const steps=host.querySelector('.steps');function render(){steps.innerHTML='';cd.steps.forEach((s,i)=>{const d=document.createElement('div');d.className='step'+(i?' locked':'');d.innerHTML='<div class="step-head">步驟 '+(i+1)+'：'+s.q+'</div>'+opts('c-'+n+'-'+i,s.options)+'<div class="actions"><button class="btn ghost hint">提示</button><button class="btn confirm">確認這一步</button></div><div class="hint hidden">'+s.hint+'</div><div class="step-feedback"></div><div class="result hidden"></div>';if(i)d.querySelectorAll('input,button').forEach(x=>x.disabled=true);d.querySelector('.hint').onclick=()=>d.querySelector('.hint').classList.toggle('hidden');d.querySelector('.confirm').onclick=()=>{const p=d.querySelector('input:checked'),fb=d.querySelector('.step-feedback');fb.className='step-feedback show';if(!p){fb.classList.add('warn');fb.textContent='請先選擇一個解題步驟。';return}if(+p.value!==s.ans){fb.classList.add('bad');fb.textContent='這一步還不對，請看提示後再試。';return}fb.classList.add('ok');fb.textContent='步驟正確，已完成數值計算。';const r=d.querySelector('.result');r.textContent=s.calc();r.classList.remove('hidden');d.querySelectorAll('input,button').forEach(x=>x.disabled=true);const next=steps.children[i+1];if(next){next.classList.remove('locked');next.querySelectorAll('input,button').forEach(x=>x.disabled=false)}};steps.appendChild(d)})}render();host.querySelector('.resetc').onclick=render}
+document.addEventListener('DOMContentLoaded',()=>{for(let i=1;i<=8;i++)mount(i)});for(let i=1;i<=8;i++)mount(i)})();
+</script>
+</body></html>
+
