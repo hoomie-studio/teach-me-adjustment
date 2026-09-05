@@ -20,6 +20,9 @@ svg{width:100%;height:auto}.good{font-weight:800;color:var(--green)}
 .lesson-frame{display:block;width:100%;height:min(1600px,calc(100vh - 100px));min-height:900px;border:0;background:#f7f8fb}
 
 .assessment{margin:18px 0 4px}.assessment .assessment-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}.assessment .assessment-head h3{margin:0}.assessment .badge{font-size:12px;color:var(--blue);font-weight:800;background:#edf2ff;border:1px solid #cfdbff;padding:4px 8px;border-radius:999px}.assessment .quiz-card,.assessment .challenge{border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px;background:#fbfcff}.assessment .q-title,.assessment .step-head{font-weight:800}.assessment .options{display:grid;gap:7px;margin-top:10px}.assessment .option{display:flex;gap:8px;align-items:flex-start;padding:8px;border:1px solid var(--line);border-radius:9px;background:white;cursor:pointer}.assessment .option input{width:auto;margin-top:4px}.assessment .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.assessment .btn.secondary,.assessment .btn.ghost{background:white;color:var(--ink);border:1px solid var(--line)}.assessment .feedback,.assessment .step-feedback{display:none;margin-top:10px;padding:9px;border-radius:8px}.assessment .feedback.show,.assessment .step-feedback.show{display:block}.assessment .ok{background:#e9f8ef;color:#137244}.assessment .bad,.assessment .warn{background:#fff1f1;color:#a33838}.assessment .step{margin-top:10px;padding:12px;border:1px solid var(--line);border-radius:12px;background:white}.assessment .step.locked{opacity:.55}.assessment .hint{margin-top:10px;color:var(--muted);font-size:14px}.assessment .hidden{display:none}.assessment .result{margin-top:10px;padding:10px;border-radius:8px;background:#eef4ff;border-left:4px solid var(--blue);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap}.assessment .score{display:flex;gap:8px;margin-top:10px}.assessment .stat{padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:white}.assessment .stat .k{font-size:12px;color:var(--muted)}.assessment .stat .v{font-weight:850;font-size:18px}@media(max-width:700px){.assessment .assessment-head{align-items:flex-start;flex-direction:column}.assessment .option{padding:10px}.assessment .btn{width:100%}.assessment .score{display:grid;grid-template-columns:repeat(3,1fr)}}
+
+.roadmap{background:linear-gradient(135deg,#fff,#f3f6ff)}.roadmap h2{font-size:24px}.roadmap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}.roadmap-stage{border:1px solid var(--line);border-radius:14px;padding:15px;background:#fff}.roadmap-stage .stage-label{font-size:12px;font-weight:850;color:var(--blue)}.roadmap-stage h3{margin-top:5px}.roadmap-stage ol{padding-left:20px;margin:9px 0}.roadmap-stage li{margin:5px 0}.roadmap-goal{border-top:1px dashed var(--line);padding-top:9px;font-weight:750;color:#304b86}.takeaway{border-left:4px solid var(--blue);background:#f3f6ff;border-radius:9px;padding:12px 14px;margin:16px 0}.takeaway b{display:block;margin-bottom:3px}.bridge-card{background:#fbfcff}.bridge-lines{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}.bridge-line{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.proj-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(240px,.8fr);gap:14px;align-items:start}.projection-svg{display:block;width:100%;border:1px solid var(--line);background:#fbfcff;border-radius:12px}.geom-controls{display:grid;gap:10px}.geom-controls label{display:grid;gap:5px;font-weight:750}.geom-controls input[type=range]{padding:0}.geom-kpi{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff}.geom-kpi .small{display:block}.geom-note{background:#f3f6ff;border:1px solid #d8e2ff;border-radius:10px;padding:12px;margin-top:12px}.obs-canvas{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:12px;background:#fbfcff;touch-action:none;cursor:grab}.obs-canvas.dragging{cursor:grabbing}.geom-caption{font-size:14px;color:var(--muted);margin-top:8px}@media(max-width:760px){.roadmap-grid,.proj-grid,.bridge-lines{grid-template-columns:1fr}.projection-svg{min-height:280px}.obs-canvas{min-height:300px}.roadmap-stage{padding:14px}}
+
 </style></head>
 <body>
 <header class="bar"><div><div class="brand">測量平差學習網｜完整版</div><div class="nav"><button onclick="go('home')">首頁</button><button onclick="go('l1')">1</button><button onclick="go('l2')">2</button><button onclick="go('l3')">3</button><button onclick="go('l4')">4</button><button onclick="go('l5')">5</button><button onclick="go('l6')">6</button><button onclick="go('l7')">7</button><button onclick="go('l8')">8</button></div></div></header>
@@ -53,6 +56,9 @@ Aᵀ(Ax̂−L)=0
 AᵀA x̂ = AᵀL
   ↓
 x̂ = 最小二乘估計</div></div>
+
+<div class="card roadmap"><div class="eyebrow">建議學習路線</div><h2>三階段快速上手平差</h2><p>不用一次把所有矩陣與公式背完。照著三個階段走，先建立感覺，再學會計算，最後看懂幾何意義。</p><div class="roadmap-grid"><article class="roadmap-stage"><div class="stage-label">第一階段（1～2 天）</div><h3>先會算，建立感覺</h3><ol><li>只看第 1、2、3 課。</li><li>用計算機算幾組重複觀測的平均值與殘差。</li><li>自己畫一次 Σv² 隨 x̂ 變化的碗形曲線。</li></ol><div class="roadmap-goal">核心目標：平差值是讓殘差平方和最小的值；平均值是推導結果，不是規定。</div></article><article class="roadmap-stage"><div class="stage-label">第二階段（3～5 天）</div><h3>進入矩陣世界</h3><ol><li>只複習必要的高中矩陣乘法。</li><li>先理解 AᵀA、AᵀL。</li><li>用第 4、5 課工具改變係數，看法方程怎麼改變。</li></ol><div class="roadmap-goal">核心目標：能手算一個簡單的兩未知數最小二乘平差。</div></article><article class="roadmap-stage"><div class="stage-label">第三階段</div><h3>真正理解幾何</h3><ol><li>重點閱讀第 6、7 課。</li><li>把觀測值 L 想成空間中的點。</li><li>把所有可能的 Ax 想成直線或平面。</li><li>平差就是把 L 垂直投影到模型空間。</li></ol><div class="roadmap-goal">核心目標：看到 Aᵀv=0，就知道殘差 v 垂直模型空間。</div></article></div></div>
+
 </section>
 
 <section id="l1" class="page">
@@ -71,6 +77,7 @@ vᵢ = x̂ − ℓᵢ
 s = √(Σvᵢ²/(n−1))</div>
 <div class="call"><b>真誤差 ≠ 殘差。</b> 真誤差需要知道真值 T；殘差只需要平差值 x̂ 與觀測值。</div></div>
 <div class="card"><h3>③ 每一筆觀測如何被修正</h3><div class="scroll"><table><thead><tr><th>#</th><th>ℓᵢ</th><th>vᵢ=x̂−ℓᵢ</th><th>vᵢ²</th><th>ℓᵢ+vᵢ</th></tr></thead><tbody id="tb1"></tbody></table></div><p id="sumv1"></p></div>
+<div class="takeaway"><b>這堂只要記住一句</b>最小二乘就是找讓 Σv² 最小的答案。</div>
 <div class="assessment-slot"></div>
 <div class="next"><button class="ghost" onclick="go('home')">← 首頁</button><button class="btn" onclick="go('l2')">下一課 →</button></div>
 </section>
@@ -83,6 +90,7 @@ S(x̂)=v₁²+v₂²+v₃²</div>
 <div class="card"><h3>② 為什麼不能直接 Σv？</h3><p>正負殘差會互相抵消。例如 −1、0、+1 加起來是 0，但不代表完全沒有誤差。</p><div class="formula">Σv 可能因正負抵消
 Σv² 不會互相抵消
 所以用 S = Σv² 衡量整體不吻合程度</div><div class="call">最小二乘的意思就是：在所有可能的 x̂ 中，找讓 S=Σv² 最小的那一個。</div></div>
+<div class="takeaway"><b>這堂只要記住一句</b>平方能避免正負殘差互相抵消，所以 Σv² 才能衡量整體不吻合。</div>
 <div class="assessment-slot"></div>
 <div class="next"><button class="ghost" onclick="go('home')">← 首頁</button><button class="btn" onclick="go('l3')">下一課 →</button></div>
 </section>
@@ -103,12 +111,16 @@ n x̂ − Σℓᵢ = 0
 
 所以：
 x̂ = Σℓᵢ / n</div><div class="call">所以「平均值」不是我們硬規定的答案，而是最小二乘條件推導出來的答案。</div></div>
+<div class="takeaway"><b>這堂只要記住一句</b>平均值不是規定；它是把 Σv² 微分並找最低點後得到的結果。</div>
 <div class="assessment-slot"></div>
 <div class="next"><button class="ghost" onclick="go('home')">← 首頁</button><button class="btn" onclick="go('l4')">下一課 →</button></div>
 </section>
 
 <section id="l4" class="page">
 <div class="hero"><div class="eyebrow">第 4 課</div><h2>矩陣 A、x、L、v</h2><p>從普通聯立方程式出發，看矩陣到底整理了什麼。</p></div>
+
+<div class="card bridge-card"><div class="eyebrow">先從三條普通方程式開始</div><h3>三條觀測式，不一定會交在同一點</h3><div class="bridge-lines"><div class="bridge-line">x + y ≈ 10</div><div class="bridge-line">2x + y ≈ 13</div><div class="bridge-line">x + 2y ≈ 14</div></div><p>如果量測沒有誤差，三條線會交在同一組 x、y；真實觀測通常做不到。平差要找的是讓三條式子<strong>整體最接近</strong>的一組 x、y。</p><div class="call"><b>矩陣不是新魔法：</b>A 是係數整理表，x 是未知數，L 是觀測值。它只是把很多條方程式整齊地寫成 Ax ≈ L。</div></div>
+
 <div class="card"><h3>① 編輯三條觀測式</h3><p class="small">每列代表 a·x+b·y≈L。</p><div class="scroll"><table><thead><tr><th>#</th><th>x係數</th><th>y係數</th><th>L</th></tr></thead><tbody>
 <tr><td>1</td><td><input id="a11" type="number" value="1"></td><td><input id="a12" type="number" value="1"></td><td><input id="L41" type="number" value="10"></td></tr>
 <tr><td>2</td><td><input id="a21" type="number" value="2"></td><td><input id="a22" type="number" value="1"></td><td><input id="L42" type="number" value="14"></td></tr>
@@ -117,6 +129,7 @@ x̂ = Σℓᵢ / n</div><div class="call">所以「平均值」不是我們硬�
 <div class="card"><h3>② Ax 其實只是逐列做普通算術</h3><div id="expand4"></div><div class="formula">Ax = 模型根據 x、y 預測出的三筆值
 v = Ax − L</div></div>
 <div class="card"><h3>③ 自己猜 x、y，看殘差</h3><div class="grid g2"><label>x<input id="gx4" type="number" value="4"></label><label>y<input id="gy4" type="number" value="6"></label></div><button class="btn" onclick="guess4()">計算 Ax 與殘差</button><div id="res4"></div></div>
+<div class="takeaway"><b>這堂只要記住一句</b>矩陣只是把很多條觀測方程式整理起來。</div>
 <div class="assessment-slot"></div>
 <div class="next"><button class="ghost" onclick="go('home')">← 首頁</button><button class="btn" onclick="go('l5')">下一課 →</button></div>
 </section>
@@ -140,6 +153,7 @@ AᵀA x̂ − AᵀL = 0
 
 所以：
 AᵀA x̂ = AᵀL</div></div>
+<div class="takeaway"><b>這堂只要記住一句</b>法方程是在找最佳解必須滿足的條件。</div>
 <div class="assessment-slot"></div>
 <div class="next"><button class="ghost" onclick="go('home')">← 首頁</button><button class="btn" onclick="go('l6')">下一課 →</button></div>
 </section>
@@ -153,11 +167,15 @@ L₃≈x
 
 A=[1,1,1]ᵀ
 Ax=[x,x,x]ᵀ</div><p>只有一個未知數 x，因此所有可能的 Ax 都落在方向 [1,1,1]ᵀ 的直線上。</p></div>
-<div class="card"><h3>③ 3D 觀測空間</h3><svg id="plot6" viewBox="0 0 720 480"></svg><div id="nums6"></div></div>
+
+<div class="card"><h3>③ 先用 2D 看正交投影</h3><p>先別急著背矩陣。把模型想成這條線，把觀測 L 想成線外的一個點；P=Ax̂ 是線上離 L 最近的點。</p><div class="proj-grid"><div><svg id="proj2d6" class="projection-svg" viewBox="0 0 720 430" role="img" aria-label="觀測點投影到模型直線的 2D 圖"></svg><div class="geom-caption">藍線：模型空間 Col(A)。紅點：觀測 L。綠點：最佳投影 P=Ax̂。</div></div><div class="geom-controls"><label>L 的水平位置 <span id="p2xv">3.0</span><input id="p2x" type="range" min="-6" max="6" step=".1" value="3"></label><label>L 的垂直位置 <span id="p2yv">4.0</span><input id="p2y" type="range" min="-5" max="7" step=".1" value="4"></label><div class="geom-kpi"><span class="small">殘差長度 |v|</span><b id="p2len">—</b></div><div class="geom-kpi"><span class="small">a·v（應接近 0）</span><b id="p2dot">—</b></div><div class="geom-note"><b>最佳解不是讓殘差消失，</b>而是讓觀測點到模型空間的距離最短。<div class="formula">aᵀv = 0</div>殘差與模型允許變化的方向垂直。</div></div></div></div>
+
+<div class="card"><h3>④ 3D 觀測空間</h3><svg id="plot6" viewBox="0 0 720 480"></svg><div id="nums6"></div></div>
 <div class="card"><h3>④ 為什麼「最近」會導致垂直？</h3><p>從空間外的一個點 L 到一條直線，最短距離一定沿垂線。最小二乘就是在找這個最近點 Ax̂。</p><div class="formula">v = Ax̂ − L
 A · v = 0
 矩陣寫法：
 Aᵀv = 0</div><div id="dot6" class="call"></div></div>
+<div class="takeaway"><b>這堂只要記住一句</b>最近點的連線一定垂直模型方向。</div>
 <div class="assessment-slot"></div>
 <div class="next"><button class="ghost" onclick="go('home')">← 首頁</button><button class="btn" onclick="go('l7')">下一課 →</button></div>
 </section>
@@ -173,7 +191,10 @@ a₂ = [1,1,2]ᵀ
 
 Ax = x a₁ + y a₂</div><p>只要 a₁、a₂ 不平行，它們所有線性組合就形成一個平面。這個平面就是 <b>A 的欄空間 Col(A)</b>。</p></div>
 <div class="card"><h3>② 自己改 x、y，看 Ax 在平面移動</h3><div class="grid g2"><label>x=<b id="x7o"></b><input id="x7" type="range" min="-2" max="8" step=".05" value="4.5"></label><label>y=<b id="y7o"></b><input id="y7" type="range" min="-2" max="8" step=".05" value="4.5"></label></div><div id="ax7" class="formula"></div><svg id="plot7" viewBox="0 0 720 480"></svg><p class="small">三軸仍是三筆觀測的座標，不是真實世界 XYZ。</p></div>
-<div class="card"><h3>③ 把觀測 L 投影到平面</h3><div class="grid g3"><label>L₁<input id="L71" type="number" value="10"></label><label>L₂<input id="L72" type="number" value="14"></label><label>L₃<input id="L73" type="number" value="13"></label></div><button class="btn" onclick="solve7()">最小二乘投影</button><div id="res7"></div></div>
+
+<div class="card"><h3>③ 可旋轉的 3D 觀測空間投影</h3><p class="small">這裡不是地理座標 XYZ，而是三筆觀測形成的觀測空間。拖曳圖面（手機可用手指）可旋轉視角。</p><div class="proj-grid"><div><canvas id="obs3d7" class="obs-canvas" width="720" height="480" aria-label="三筆觀測空間的平面投影圖"></canvas><div class="geom-caption">半透明面：Col(A)。紅點：觀測 L。綠點：投影 Ax̂。紅色虛線：殘差 v=Ax̂−L。</div></div><div class="geom-controls"><label>L₁ <span id="g3l1v">10</span><input id="g3l1" type="range" min="6" max="16" step=".1" value="10"></label><label>L₂ <span id="g3l2v">14</span><input id="g3l2" type="range" min="6" max="16" step=".1" value="14"></label><label>L₃ <span id="g3l3v">13</span><input id="g3l3" type="range" min="6" max="16" step=".1" value="13"></label><div class="geom-kpi"><span class="small">最佳 x̂、ŷ</span><b id="g3xy">—</b></div><div class="geom-kpi"><span class="small">a₁ᵀv、a₂ᵀv</span><b id="g3dot">—</b></div><div class="geom-note"><b>v 同時垂直 a₁ 和 a₂，</b>所以 v 垂直整個 Col(A)。<div class="formula">Aᵀv=0\nv=Ax̂−L\nAᵀ(Ax̂−L)=0\nAᵀA x̂=AᵀL</div>先看到垂直投影，再把它寫成法方程。</div></div></div></div>
+
+<div class="card"><h3>④ 把觀測 L 投影到平面</h3><div class="grid g3"><label>L₁<input id="L71" type="number" value="10"></label><label>L₂<input id="L72" type="number" value="14"></label><label>L₃<input id="L73" type="number" value="13"></label></div><button class="btn" onclick="solve7()">最小二乘投影</button><div id="res7"></div></div>
 <div class="card"><h3>④ Aᵀv=0 現在包含兩個垂直條件</h3><div class="formula">Aᵀv =
 [a₁ᵀv
  a₂ᵀv]
@@ -184,6 +205,7 @@ Ax = x a₁ + y a₂</div><p>只要 a₁、a₂ 不平行，它們所有線性�
 [0
  0]</div><p>所以 v 同時垂直 a₁ 與 a₂。既然 a₁、a₂ 是平面內兩個獨立方向，v 就垂直整個平面。</p><div class="call"><b>最小二乘的幾何本質：</b>把觀測 L 正交投影到 Col(A)。Ax̂ 是投影點，v=Ax̂−L 是垂直於模型空間的殘差。</div></div>
 <div class="card"><h3>⑤ 把第 6、7 課比較</h3><div class="scroll"><table><thead><tr><th>概念</th><th>第6課</th><th>第7課</th></tr></thead><tbody><tr><td>未知數</td><td>1</td><td>2</td></tr><tr><td>A欄數</td><td>1</td><td>2</td></tr><tr><td>模型空間</td><td>直線</td><td>平面</td></tr><tr><td>Aᵀv=0</td><td>v垂直1個方向</td><td>v同時垂直2個欄向量</td></tr><tr><td>共同本質</td><td colspan="2">v ⟂ Col(A)</td></tr></tbody></table></div></div>
+<div class="takeaway"><b>這堂只要記住一句</b>Aᵀv = 0 就是在說殘差垂直模型空間。</div>
 <div class="assessment-slot"></div>
 <div class="next"><button class="ghost" onclick="go('home')">← 回首頁心智圖</button><button class="ghost" onclick="go('l1')">從第1課重看</button></div>
 </section>
@@ -192,6 +214,7 @@ Ax = x a₁ + y a₂</div><p>只要 a₁、a₂ 不平行，它們所有線性�
 <section id="l8" class="page">
 <div class="hero"><div class="eyebrow">第 8 課</div><h2>加權最小二乘</h2><p>當不同觀測具有不同精度時，較可靠的觀測應有較大的影響力。本課透過互動工具理解權重與加權平差。</p></div>
 <div class="card" style="padding:0;overflow:hidden"><iframe class="lesson-frame" src="1-lesson8_weighted_least_squares.html" title="第8課：加權最小二乘"></iframe></div>
+<div class="takeaway"><b>這堂只要記住一句</b>權重讓較精密的觀測在平差結果中有較大的影響力。</div>
 <div class="assessment-slot"></div>
 <div class="next"><button class="ghost" onclick="go('l7')">← 第7課</button><button class="ghost" onclick="go('home')">回首頁心智圖</button></div>
 </section>
@@ -472,4 +495,11 @@ const cards=[...host.querySelectorAll('.quiz-card')],score=host.querySelector('.
 const steps=host.querySelector('.steps');function render(){steps.innerHTML='';cd.steps.forEach((s,i)=>{const d=document.createElement('div');d.className='step'+(i?' locked':'');d.innerHTML='<div class="step-head">步驟 '+(i+1)+'：'+s.q+'</div>'+opts('c-'+n+'-'+i,s.options)+'<div class="actions"><button class="btn ghost hint">提示</button><button class="btn confirm">確認這一步</button></div><div class="hint hidden">'+s.hint+'</div><div class="step-feedback"></div><div class="result hidden"></div>';if(i)d.querySelectorAll('input,button').forEach(x=>x.disabled=true);d.querySelector('.hint').onclick=()=>d.querySelector('.hint').classList.toggle('hidden');d.querySelector('.confirm').onclick=()=>{const p=d.querySelector('input:checked'),fb=d.querySelector('.step-feedback');fb.className='step-feedback show';if(!p){fb.classList.add('warn');fb.textContent='請先選擇一個解題步驟。';return}if(+p.value!==s.ans){fb.classList.add('bad');fb.textContent='這一步還不對，請看提示後再試。';return}fb.classList.add('ok');fb.textContent='步驟正確，已完成數值計算。';const r=d.querySelector('.result');r.textContent=s.calc();r.classList.remove('hidden');d.querySelectorAll('input,button').forEach(x=>x.disabled=true);const next=steps.children[i+1];if(next){next.classList.remove('locked');next.querySelectorAll('input,button').forEach(x=>x.disabled=false)}};steps.appendChild(d)})}render();host.querySelector('.resetc').onclick=render}
 document.addEventListener('DOMContentLoaded',()=>{for(let i=1;i<=8;i++)mount(i)});for(let i=1;i<=8;i++)mount(i)})();
 </script>
+
+<script>
+(()=>{function by(id){return document.getElementById(id)}
+function init2D(){const svg=by('proj2d6'),sx=by('p2x'),sy=by('p2y');if(!svg||!sx||svg.dataset.ready)return;svg.dataset.ready='1';const a=[1,.55],aa=1+a[1]*a[1],C=[360,220],S=38;function pt(q){return [C[0]+q[0]*S,C[1]-q[1]*S]}function draw(){const L=[+sx.value,+sy.value],t=(L[0]*a[0]+L[1]*a[1])/aa,P=[t*a[0],t*a[1]],v=[P[0]-L[0],P[1]-L[1]],len=Math.hypot(v[0],v[1]),dot=a[0]*v[0]+a[1]*v[1],A=pt([-8,-4.4]),B=pt([8,4.4]),l=pt(L),p=pt(P),u=[a[0]/Math.sqrt(aa),a[1]/Math.sqrt(aa)],nv=len?[v[0]/len,v[1]/len]:[-u[1],u[0]],r1=pt([P[0]+u[0]*.35,P[1]+u[1]*.35]),r2=pt([P[0]+u[0]*.35+nv[0]*.35,P[1]+u[1]*.35+nv[1]*.35]),r3=pt([P[0]+nv[0]*.35,P[1]+nv[1]*.35]);svg.innerHTML='<line x1="40" y1="'+C[1]+'" x2="680" y2="'+C[1]+'" stroke="#dfe5ef"/><line x1="'+C[0]+'" y1="35" x2="'+C[0]+'" y2="395" stroke="#dfe5ef"/><line x1="'+A[0]+'" y1="'+A[1]+'" x2="'+B[0]+'" y2="'+B[1]+'" stroke="#315efb" stroke-width="5"/><text x="'+(B[0]-56)+'" y="'+(B[1]-10)+'" fill="#315efb">Col(A)</text><line x1="'+l[0]+'" y1="'+l[1]+'" x2="'+p[0]+'" y2="'+p[1]+'" stroke="#c94242" stroke-width="3" stroke-dasharray="8 6"/><polyline points="'+r1.join(',')+' '+r2.join(',')+' '+r3.join(',')+'" fill="none" stroke="#667085" stroke-width="2"/><circle cx="'+l[0]+'" cy="'+l[1]+'" r="8" fill="#c94242"/><text x="'+(l[0]+10)+'" y="'+(l[1]-10)+'" fill="#c94242">L</text><circle cx="'+p[0]+'" cy="'+p[1]+'" r="8" fill="#16845b"/><text x="'+(p[0]+10)+'" y="'+(p[1]+20)+'" fill="#16845b">P = Ax̂</text><text x="'+((l[0]+p[0])/2+8)+'" y="'+((l[1]+p[1])/2)+'" fill="#c94242">v</text>';by('p2xv').textContent=L[0].toFixed(1);by('p2yv').textContent=L[1].toFixed(1);by('p2len').textContent=len.toFixed(3);by('p2dot').textContent=dot.toExponential(2)}sx.oninput=draw;sy.oninput=draw;draw()}
+function init3D(){const c=by('obs3d7');if(!c||c.dataset.ready)return;c.dataset.ready='1';const ctx=c.getContext('2d'),ids=['g3l1','g3l2','g3l3'];let yaw=-.72,pitch=.47,drag=null;function project(q){const cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch),x=cy*q[0]-sy*q[1],z=sy*q[0]+cy*q[1],y=cp*q[1]-sp*z;return [355+x*17,345-y*17]}function line(a,b,col,w,dash){const A=project(a),B=project(b);ctx.beginPath();ctx.setLineDash(dash||[]);ctx.moveTo(A[0],A[1]);ctx.lineTo(B[0],B[1]);ctx.strokeStyle=col;ctx.lineWidth=w||2;ctx.stroke();ctx.setLineDash([])}function circle(a,col,label){const P=project(a);ctx.beginPath();ctx.arc(P[0],P[1],7,0,Math.PI*2);ctx.fillStyle=col;ctx.fill();ctx.fillStyle=col;ctx.font='15px sans-serif';ctx.fillText(label,P[0]+10,P[1]-10)}function render(){const L=ids.map(id=>+by(id).value),u1=L[0]+2*L[1]+L[2],u2=L[0]+L[1]+2*L[2],x=(6*u1-5*u2)/11,y=(6*u2-5*u1)/11,P=[x+y,2*x+y,x+2*y],v=[P[0]-L[0],P[1]-L[1],P[2]-L[2]],d1=v[0]+2*v[1]+v[2],d2=v[0]+v[1]+2*v[2];ctx.clearRect(0,0,c.width,c.height);const pl=[[-4,-6,-6],[4,10,2],[12,18,12],[4,2,10]].map(project);ctx.beginPath();ctx.moveTo(pl[0][0],pl[0][1]);pl.slice(1).forEach(z=>ctx.lineTo(z[0],z[1]));ctx.closePath();ctx.fillStyle='rgba(49,94,251,.16)';ctx.fill();ctx.strokeStyle='rgba(49,94,251,.65)';ctx.stroke();line([0,0,0],[18,0,0],'#667085',2);line([0,0,0],[0,18,0],'#667085',2);line([0,0,0],[0,0,18],'#667085',2);[[18,0,0,'L₁'],[0,18,0,'L₂'],[0,0,18,'L₃']].forEach(z=>{const p=project(z);ctx.fillStyle='#475467';ctx.font='15px sans-serif';ctx.fillText(z[3],p[0]+5,p[1]-5)});line([0,0,0],[1,2,1],'#315efb',4);line([0,0,0],[1,1,2],'#6d4aff',4);circle([0,0,0],'#475467','O');circle([1,2,1],'#315efb','a₁');circle([1,1,2],'#6d4aff','a₂');line(L,P,'#c94242',3,[8,6]);circle(L,'#c94242','L');circle(P,'#16845b','Ax̂');by('g3xy').textContent='x̂='+x.toFixed(3)+'，ŷ='+y.toFixed(3);by('g3dot').textContent='a₁ᵀv='+d1.toExponential(2)+'；a₂ᵀv='+d2.toExponential(2);ids.forEach((id,i)=>by(id+'v').textContent=L[i].toFixed(1))}ids.forEach(id=>by(id).oninput=render);c.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];c.setPointerCapture(e.pointerId);c.classList.add('dragging')});c.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-drag[0])*.012;pitch=Math.max(-1.25,Math.min(1.25,pitch+(e.clientY-drag[1])*.012));drag=[e.clientX,e.clientY];render()});['pointerup','pointercancel'].forEach(t=>c.addEventListener(t,()=>{drag=null;c.classList.remove('dragging')}));render()}function init(){init2D();init3D()}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})();
+</script>
 </body></html>
+
