@@ -23,6 +23,7 @@ svg{width:100%;height:auto}.good{font-weight:800;color:var(--green)}
 
 .roadmap{background:linear-gradient(135deg,#fff,#f3f6ff)}.roadmap h2{font-size:24px}.roadmap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}.roadmap-stage{border:1px solid var(--line);border-radius:14px;padding:15px;background:#fff}.roadmap-stage .stage-label{font-size:12px;font-weight:850;color:var(--blue)}.roadmap-stage h3{margin-top:5px}.roadmap-stage ol{padding-left:20px;margin:9px 0}.roadmap-stage li{margin:5px 0}.roadmap-goal{border-top:1px dashed var(--line);padding-top:9px;font-weight:750;color:#304b86}.takeaway{border-left:4px solid var(--blue);background:#f3f6ff;border-radius:9px;padding:12px 14px;margin:16px 0}.takeaway b{display:block;margin-bottom:3px}.bridge-card{background:#fbfcff}.bridge-lines{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}.bridge-line{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.proj-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(240px,.8fr);gap:14px;align-items:start}.projection-svg{display:block;width:100%;border:1px solid var(--line);background:#fbfcff;border-radius:12px}.geom-controls{display:grid;gap:10px}.geom-controls label{display:grid;gap:5px;font-weight:750}.geom-controls input[type=range]{padding:0}.geom-kpi{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff}.geom-kpi .small{display:block}.geom-note{background:#f3f6ff;border:1px solid #d8e2ff;border-radius:10px;padding:12px;margin-top:12px}.obs-canvas{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:12px;background:#fbfcff;touch-action:none;cursor:grab}.obs-canvas.dragging{cursor:grabbing}.geom-caption{font-size:14px;color:var(--muted);margin-top:8px}@media(max-width:760px){.roadmap-grid,.proj-grid,.bridge-lines{grid-template-columns:1fr}.projection-svg{min-height:280px}.obs-canvas{min-height:300px}.roadmap-stage{padding:14px}}
 .sequence-label{font-size:12px;font-weight:850;color:var(--blue);letter-spacing:.04em;margin-bottom:4px}.calc-lab{background:#fbfcff}.calc-lab summary{cursor:pointer;font-weight:850;color:#304b86}.calc-lab[open] summary{margin-bottom:14px}.conflict-table td,.conflict-table th{text-align:left}.route-note{border:1px dashed #bcc9e5;background:#f9fbff;border-radius:10px;padding:11px;margin-top:12px}
+.knowledge-hub{background:linear-gradient(135deg,#fbfcff,#f3f6ff)}.knowledge-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}.knowledge-links a,.study-link{color:#284fbb;font-weight:800;text-decoration:none;border-bottom:1px dashed #6f8ddd}.knowledge-links a{border:1px solid #cbd8f2;border-radius:999px;background:#fff;padding:7px 10px}.study-link::after{content:' ↗';font-size:.82em}.study-link:hover,.knowledge-links a:hover{color:#173b9c;border-color:#315efb}
 
 </style></head>
 <body>
@@ -59,6 +60,8 @@ AᵀA x̂ = AᵀL
 x̂ = 最小二乘估計</div></div>
 
 <div class="card roadmap"><div class="eyebrow">建議學習路線</div><h2>三階段快速上手平差</h2><p>不用一次把所有矩陣與公式背完。照著三個階段走，先建立感覺，再學會計算，最後看懂幾何意義。</p><div class="roadmap-grid"><article class="roadmap-stage"><div class="stage-label">第一階段（1～2 天）</div><h3>先會算，建立感覺</h3><ol><li>只看第 1、2、3 課。</li><li>用計算機算幾組重複觀測的平均值與殘差。</li><li>自己畫一次 Σv² 隨 x̂ 變化的碗形曲線。</li></ol><div class="roadmap-goal">核心目標：平差值是讓殘差平方和最小的值；平均值是推導結果，不是規定。</div></article><article class="roadmap-stage"><div class="stage-label">第二階段（3～5 天）</div><h3>進入矩陣世界</h3><ol><li>只複習必要的高中矩陣乘法。</li><li>先理解 AᵀA、AᵀL。</li><li>用第 4、5 課工具改變係數，看法方程怎麼改變。</li></ol><div class="roadmap-goal">核心目標：能手算一個簡單的兩未知數最小二乘平差。</div></article><article class="roadmap-stage"><div class="stage-label">第三階段</div><h3>真正理解幾何</h3><ol><li>重點閱讀第 6、7 課。</li><li>把觀測值 L 想成空間中的點。</li><li>把所有可能的 Ax 想成直線或平面。</li><li>平差就是把 L 垂直投影到模型空間。</li></ol><div class="roadmap-goal">核心目標：看到 Aᵀv=0，就知道殘差 v 垂直模型空間。</div></article></div></div>
+
+<div class="card knowledge-hub"><div class="eyebrow">AI 複習補給站</div><h2>不熟的名詞，隨時點開複習</h2><p>課文中出現的已收錄專有名詞會變成可點擊連結，開啟對應的 AI 對話或補充講解。日後只要把「名詞＋對話連結」交給我，就能加入全站的名詞補給庫。</p><div id="knowledgeLinks" class="knowledge-links"></div></div>
 
 </section>
 
@@ -199,6 +202,69 @@ AᵀA x̂ = AᵀL</div><div class="route-note"><b>法方程不是憑空出現：
 <div class="takeaway"><b>這堂只要記住一句</b>權重讓較精密的觀測在平差結果中有較大的影響力。</div>
 <div class="assessment-slot"></div>
 <div class="next"><button class="ghost" onclick="go('l7')">← 第7課</button><button class="ghost" onclick="go('home')">回首頁心智圖</button></div>
+</section>
+<section id="derivation" class="page">
+<div class="hero"><div class="eyebrow">AI 複習補給｜最小平方法推導</div><h2>從平均值一路推到法方程</h2><p>這一頁只處理最基本的等權最小平方法，目標是理解 <b>AᵀA x̂ = AᵀL</b> 從哪裡來。</p></div>
+<div class="card"><h3>先記住這條故事線</h3><div class="formula">Ax + v = L
+v = L − Ax
+vᵀv → min
+Aᵀ(L − Ax̂) = 0
+AᵀA x̂ = AᵀL</div><p class="small">本補給頁採 v=L−Ax；主課若寫 v=Ax−L，只差一個負號，平方和與「等於 0」的正交條件不變。</p></div>
+<div class="card"><div class="sequence-label">① 從一個未知數開始</div><h3>量同一段距離三次</h3><div class="formula">L₁=10.1，L₂=9.9，L₃=10.0
+未知數：x
+v₁=10.1−x，v₂=9.9−x，v₃=10.0−x
+
+S(x)=v₁²+v₂²+v₃²
+=(10.1−x)²+(9.9−x)²+(10.0−x)² → min</div><p>不是要求每個殘差都消失，而是找一個 x，讓所有殘差的平方和最小。</p></div>
+<div class="card"><div class="sequence-label">② 為什麼微分？</div><h3>碗形曲線最低點的斜率是 0</h3><div class="formula">dS/dx=0
+
+−2(10.1−x)−2(9.9−x)−2(10.0−x)=0
+(10.1−x)+(9.9−x)+(10.0−x)=0
+30.0−3x=0
+
+x̂=10</div><p>這就是平均值為什麼會出現：它是最小平方和的推導結果。</p></div>
+<div class="card"><div class="sequence-label">③ 改寫成矩陣</div><h3>三條式子排成 Ax≈L</h3><div class="formula">A=[1,1,1]ᵀ，x=[x]
+L=[10.1,9.9,10.0]ᵀ
+
+Ax=L  （沒有誤差時）
+Ax+v=L
+v=L−Ax</div><p>現實中的觀測通常不能剛好滿足 Ax=L，所以才需要殘差 v。</p></div>
+<div class="card"><div class="sequence-label">④ 平方和的矩陣寫法</div><h3>vᵀv 就是所有殘差的平方和</h3><div class="formula">v=[v₁,v₂,v₃]ᵀ
+vᵀv=[v₁ v₂ v₃][v₁ v₂ v₃]ᵀ
+
+vᵀv=v₁²+v₂²+v₃²
+(L−Ax)ᵀ(L−Ax) → min</div><p>這一步只是把熟悉的 Σv² 寫得更能處理很多未知數。</p></div>
+<div class="card"><div class="sequence-label">⑤ 把目標函數展開</div><h3>中間兩項其實是同一個數字</h3><div class="formula">S=(L−Ax)ᵀ(L−Ax)
+=(Lᵀ−xᵀAᵀ)(L−Ax)
+=LᵀL−LᵀAx−xᵀAᵀL+xᵀAᵀAx
+
+LᵀAx 與 xᵀAᵀL 都是同一個純量
+所以：
+S=LᵀL−2xᵀAᵀL+xᵀAᵀAx</div></div>
+<div class="card"><div class="sequence-label">⑥ 對未知數 x 微分</div><h3>讓斜率等於 0，得到法方程</h3><div class="formula">∂(LᵀL)/∂x=0
+∂(−2xᵀAᵀL)/∂x=−2AᵀL
+∂(xᵀAᵀAx)/∂x=2AᵀAx
+
+−2AᵀL+2AᵀAx=0
+
+AᵀA x̂=AᵀL</div><div class="call"><b>這就是法方程。</b>Aᵀ 不是硬加進來的；它是把平方和對 x 微分後自然出現的。</div></div>
+<div class="card"><div class="sequence-label">⑦ 為什麼原式 Ax=L 常常無解？</div><h3>觀測比未知數多，而且彼此帶誤差</h3><div class="formula">x+y=3.1
+x+2y=5.0
+2x+y=4.2</div><p>三條式子不一定會同時交於同一組 x、y；因此我們不再要求 Ax=L，而是找讓 A x̂ 最接近 L 的答案。</p></div>
+<div class="card"><div class="sequence-label">⑧ Aᵀv=0 的幾何意義</div><h3>最近的連線一定垂直模型空間</h3><div class="formula">AᵀA x̂=AᵀL
+Aᵀ(L−A x̂)=0
+
+v=L−A x̂
+所以：Aᵀv=0</div><p>內積為 0 表示垂直。也就是殘差 v 垂直 A 的欄空間；A x̂ 是把觀測 L 垂直投影到模型空間後的最近點。</p></div>
+<div class="card"><div class="sequence-label">⑨ 回到三次量距離驗證</div><h3>法方程會回到平均值</h3><div class="formula">A=[1,1,1]ᵀ，Aᵀ=[1,1,1]
+AᵀA=1+1+1=3
+AᵀL=10.1+9.9+10.0=30
+
+AᵀA x̂=AᵀL
+3x̂=30
+x̂=10</div><p>矩陣法方程和一開始的普通微分，得到同一個答案。</p></div>
+<div class="takeaway"><b>這頁只要記住一句</b>先讓 vᵀv 最小，微分後得到 Aᵀ(L−A x̂)=0，最後才得到 AᵀA x̂=AᵀL。</div>
+<div class="next"><button class="ghost" onclick="go('home')">← 補給站</button><button class="btn" onclick="go('l7')">回第 7 課看幾何投影 →</button></div>
 </section>
 </main>
 <script>
@@ -483,5 +549,21 @@ document.addEventListener('DOMContentLoaded',()=>{for(let i=1;i<=8;i++)mount(i)}
 (()=>{function by(id){return document.getElementById(id)}
 function init2D(){const svg=by('proj2d6'),sx=by('p2x'),sy=by('p2y');if(!svg||!sx||svg.dataset.ready)return;svg.dataset.ready='1';const a=[1,.55],aa=1+a[1]*a[1],C=[360,220],S=38;function pt(q){return [C[0]+q[0]*S,C[1]-q[1]*S]}function draw(){const L=[+sx.value,+sy.value],t=(L[0]*a[0]+L[1]*a[1])/aa,P=[t*a[0],t*a[1]],v=[P[0]-L[0],P[1]-L[1]],len=Math.hypot(v[0],v[1]),dot=a[0]*v[0]+a[1]*v[1],A=pt([-8,-4.4]),B=pt([8,4.4]),l=pt(L),p=pt(P),u=[a[0]/Math.sqrt(aa),a[1]/Math.sqrt(aa)],nv=len?[v[0]/len,v[1]/len]:[-u[1],u[0]],r1=pt([P[0]+u[0]*.35,P[1]+u[1]*.35]),r2=pt([P[0]+u[0]*.35+nv[0]*.35,P[1]+u[1]*.35+nv[1]*.35]),r3=pt([P[0]+nv[0]*.35,P[1]+nv[1]*.35]);svg.innerHTML='<line x1="40" y1="'+C[1]+'" x2="680" y2="'+C[1]+'" stroke="#dfe5ef"/><line x1="'+C[0]+'" y1="35" x2="'+C[0]+'" y2="395" stroke="#dfe5ef"/><line x1="'+A[0]+'" y1="'+A[1]+'" x2="'+B[0]+'" y2="'+B[1]+'" stroke="#315efb" stroke-width="5"/><text x="'+(B[0]-56)+'" y="'+(B[1]-10)+'" fill="#315efb">Col(A)</text><line x1="'+l[0]+'" y1="'+l[1]+'" x2="'+p[0]+'" y2="'+p[1]+'" stroke="#c94242" stroke-width="3" stroke-dasharray="8 6"/><polyline points="'+r1.join(',')+' '+r2.join(',')+' '+r3.join(',')+'" fill="none" stroke="#667085" stroke-width="2"/><circle cx="'+l[0]+'" cy="'+l[1]+'" r="8" fill="#c94242"/><text x="'+(l[0]+10)+'" y="'+(l[1]-10)+'" fill="#c94242">L</text><circle cx="'+p[0]+'" cy="'+p[1]+'" r="8" fill="#16845b"/><text x="'+(p[0]+10)+'" y="'+(p[1]+20)+'" fill="#16845b">P = Ax̂</text><text x="'+((l[0]+p[0])/2+8)+'" y="'+((l[1]+p[1])/2)+'" fill="#c94242">v</text>';by('p2xv').textContent=L[0].toFixed(1);by('p2yv').textContent=L[1].toFixed(1);by('p2len').textContent=len.toFixed(3);by('p2dot').textContent=dot.toExponential(2)}sx.oninput=draw;sy.oninput=draw;draw()}
 function init3D(){const c=by('obs3d7');if(!c||c.dataset.ready)return;c.dataset.ready='1';const ctx=c.getContext('2d'),ids=['g3l1','g3l2','g3l3'];let yaw=-.72,pitch=.47,drag=null;function project(q){const cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch),x=cy*q[0]-sy*q[1],z=sy*q[0]+cy*q[1],y=cp*q[1]-sp*z;return [355+x*17,345-y*17]}function line(a,b,col,w,dash){const A=project(a),B=project(b);ctx.beginPath();ctx.setLineDash(dash||[]);ctx.moveTo(A[0],A[1]);ctx.lineTo(B[0],B[1]);ctx.strokeStyle=col;ctx.lineWidth=w||2;ctx.stroke();ctx.setLineDash([])}function circle(a,col,label){const P=project(a);ctx.beginPath();ctx.arc(P[0],P[1],7,0,Math.PI*2);ctx.fillStyle=col;ctx.fill();ctx.fillStyle=col;ctx.font='15px sans-serif';ctx.fillText(label,P[0]+10,P[1]-10)}function render(){const L=ids.map(id=>+by(id).value),u1=L[0]+2*L[1]+L[2],u2=L[0]+L[1]+2*L[2],x=(6*u1-5*u2)/11,y=(6*u2-5*u1)/11,P=[x+y,2*x+y,x+2*y],v=[P[0]-L[0],P[1]-L[1],P[2]-L[2]],d1=v[0]+2*v[1]+v[2],d2=v[0]+v[1]+2*v[2];ctx.clearRect(0,0,c.width,c.height);const pl=[[-4,-6,-6],[4,10,2],[12,18,12],[4,2,10]].map(project);ctx.beginPath();ctx.moveTo(pl[0][0],pl[0][1]);pl.slice(1).forEach(z=>ctx.lineTo(z[0],z[1]));ctx.closePath();ctx.fillStyle='rgba(49,94,251,.16)';ctx.fill();ctx.strokeStyle='rgba(49,94,251,.65)';ctx.stroke();line([0,0,0],[18,0,0],'#667085',2);line([0,0,0],[0,18,0],'#667085',2);line([0,0,0],[0,0,18],'#667085',2);[[18,0,0,'L₁'],[0,18,0,'L₂'],[0,0,18,'L₃']].forEach(z=>{const p=project(z);ctx.fillStyle='#475467';ctx.font='15px sans-serif';ctx.fillText(z[3],p[0]+5,p[1]-5)});line([0,0,0],[1,2,1],'#315efb',4);line([0,0,0],[1,1,2],'#6d4aff',4);circle([0,0,0],'#475467','O');circle([1,2,1],'#315efb','a₁');circle([1,1,2],'#6d4aff','a₂');line(L,P,'#c94242',3,[8,6]);circle(L,'#c94242','L');circle(P,'#16845b','Ax̂');by('g3xy').textContent='x̂='+x.toFixed(3)+'，ŷ='+y.toFixed(3);by('g3dot').textContent='a₁ᵀv='+d1.toExponential(2)+'；a₂ᵀv='+d2.toExponential(2);ids.forEach((id,i)=>by(id+'v').textContent=L[i].toFixed(1))}ids.forEach(id=>by(id).oninput=render);c.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY];c.setPointerCapture(e.pointerId);c.classList.add('dragging')});c.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-drag[0])*.012;pitch=Math.max(-1.25,Math.min(1.25,pitch+(e.clientY-drag[1])*.012));drag=[e.clientX,e.clientY];render()});['pointerup','pointercancel'].forEach(t=>c.addEventListener(t,()=>{drag=null;c.classList.remove('dragging')}));render()}function init(){init2D();init3D()}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})();
+</script>
+<script>
+/* 名詞補給庫：新增「名詞：連結」即可讓全站文字自動成為複習入口。 */
+(()=>{
+  const termLinks={
+    '最小平方法':{href:'#derivation',label:'最小平方法推導｜站內複習',internal:true},
+    '法方程':{href:'#derivation',label:'法方程推導｜站內複習',internal:true},
+    '標準誤差':{href:'https://share.google/aimode/awSGDJ7U9Y9PVJGUT',label:'標準誤差｜AI 複習'},
+    '標準差':{href:'https://share.google/aimode/awSGDJ7U9Y9PVJGUT',label:'標準差｜AI 複習'}
+  };
+  const terms=Object.keys(termLinks).sort((a,b)=>b.length-a.length);
+  function makeLink(term){const entry=termLinks[term],a=document.createElement('a');a.className='study-link';a.href=entry.href;if(!entry.internal){a.target='_blank';a.rel='noopener noreferrer'}a.title='開啟「'+term+'」複習補充';a.textContent=term;return a}
+  function linkTerms(root){const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode(node){if(!node.nodeValue.trim()||node.parentElement.closest('a,script,style,textarea,button,input,select,option'))return NodeFilter.FILTER_REJECT;return terms.some(term=>node.nodeValue.includes(term))?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT}});const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);nodes.forEach(node=>{const text=node.nodeValue,parts=[];let rest=text;while(rest){let hit=null,pos=-1;terms.forEach(term=>{const p=rest.indexOf(term);if(p!==-1&&(pos===-1||p<pos)){hit=term;pos=p}});if(!hit){parts.push(document.createTextNode(rest));break}if(pos)parts.push(document.createTextNode(rest.slice(0,pos)));parts.push(makeLink(hit));rest=rest.slice(pos+hit.length)}const frag=document.createDocumentFragment();parts.forEach(part=>frag.appendChild(part));node.replaceWith(frag)})}
+  function initKnowledge(){const hub=document.getElementById('knowledgeLinks');if(hub){hub.innerHTML='';terms.forEach(term=>{const a=makeLink(term);a.textContent=termLinks[term].label;hub.appendChild(a)})}linkTerms(document.querySelector('main'))}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initKnowledge);else initKnowledge();
+})();
 </script>
 </body></html>
